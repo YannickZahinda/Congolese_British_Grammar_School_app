@@ -1,0 +1,71 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap');
+
+.uppernav{
+  display: flex;
+  justify-content: space-between;
+  background-color: #65AA45;
+  padding: 8px;
+  color: rgb(241, 242, 244);
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+.search {
+  width: 100%;
+  /* position: relative; */
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  height: 29px;
+  border-radius: 20px 0 0 20px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #184C72;
+}
+
+.searchButton {
+  width: 40px;
+  height: 29px;
+  border: 1px solid #184C72;
+  background: #184C72;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 25%;
+}
+
+div > ion-icon {
+  font-size: 25px;
+  vertical-align: middle;
+}
+span {
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  color: #fff;
+}
+
+
+/* ------------------------ Resize for responsiveness --------------------------*/
+
+.block {
+  display: flex;
+}
+
+.none {
+  display: none;
+}

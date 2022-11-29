@@ -1,13 +1,8 @@
 import React from 'react'
 import './App.css'
-import { Navbar, Footer, Skillpresentation } from './components'
+import { Navbar, Footer, Skillpresentation, UpperNav, Content} from './components'
 import ImageSlider from './ImageSlider'
-import eleveimg1 from "./assets/eleveimg1.jpeg"
-import eleveimg2 from "./assets/eleveimg2.jpeg"
-import eleveimg3 from "./assets/eleveimg3.jpeg"
-import eleveimg4 from "./assets/eleveimg4.jpeg"
-import eleveimg5 from "./assets/eleveimg5.jpeg"
-import eleveimg6 from "./assets/eleveimg6.jpeg"
+import {eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg6} from './assets'
 
 
 const App = () => {
@@ -23,12 +18,12 @@ const App = () => {
 
   const containerStyles = {
     with: '100%',
-    height: '450px'
+    height: '550px'
   }
 
   return (
     <div>
-      <div className='uppernav'>facebook &nbsp; twitter &nbsp; instagram</div>
+      <UpperNav />
       <Navbar />
       <main>
         <div style={containerStyles} className='sliderContainer'>
@@ -36,6 +31,7 @@ const App = () => {
         </div>
         <div>
           <Skillpresentation />
+          <Content />
         </div>
       </main>
     </div>

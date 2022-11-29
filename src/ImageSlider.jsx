@@ -1,9 +1,25 @@
 import React, { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+
+const variants = {
+  initial: {
+    x: 200,
+    opacity: 0.5
+  },
+  animate: {
+    x: 0,
+    opacity: 1
+  },
+  exit: {
+    x: -200,
+    opacity: 0.7
+  }
+}
 
 const ImageSlider = ({slides}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderStyles = {
-    width: '60%',
+    width: '80%',
     height: '100%',
     padding: '15px',
     position: 'relative',
@@ -15,7 +31,9 @@ const ImageSlider = ({slides}) => {
     borderRadius: '10px',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    backgroundImage: `url(${slides[currentIndex].url})`,
+    objectFit: 'cover',
+    objectPosition: 'center'
+    // backgroundImage: `url(${slides[currentIndex].url})`,
   }
 
   const leftArrowStyles = {
@@ -24,6 +42,7 @@ const ImageSlider = ({slides}) => {
     transform: 'translate(0, -50%)',
     left: '32px',
     fontSize: '45px',
+    color: 'white',
     zIndex: 1,
     cursor: 'pointer'
   }
@@ -34,6 +53,7 @@ const ImageSlider = ({slides}) => {
     transform: 'translate(0, -50%)',
     right: '32px',
     fontSize: '45px',
+    color: 'white',
     zIndex: 1,
     cursor: 'pointer'
   }
@@ -56,12 +76,9 @@ const ImageSlider = ({slides}) => {
   }
 
   const dotsStyles = {
-    margin: '0 3px',
+    margin: '0 5px',
     cursor: 'pointer',
-    fontSize: '30px',
-    hover: {
-      color: '#000'
-    }
+    fontSize: '20px'
   }
 
   const goToSlide = (slideIndex) => {
@@ -71,9 +88,19 @@ const ImageSlider = ({slides}) => {
 
   return (
     <div style={sliderStyles}>
-      <div style={leftArrowStyles} onClick={goToPrevious}>⏪</div>
-      <div style={rightArrowStyles} onClick={goToNext}>⏩</div>
-      <div style={slideStyles}></div>
+      <div style={leftArrowStyles} onClick={goToPrevious}>《</div>
+      <div style={rightArrowStyles} onClick={goToNext}>》</div>
+      {/* <AnimatePresence initial = {false}> */}
+      <motion.img variants={variants} 
+      initial='initial'
+      animate='animate'
+      exit='exit'
+      key={slides[currentIndex].url}
+      src={slides[currentIndex].url} 
+      lt="images eleves" 
+      style={slideStyles} />
+      {/* </AnimatePresence> */}
+     
       <div style={dotsContainerStyles}>
         {slides.map((slide, slideIndex) => (
           <div key={slideIndex} style={dotsStyles} onClick={() => goToSlide(slideIndex)} className='dotsStyle'>
