@@ -72,20 +72,28 @@ const SlidePict = () => {
 const PartnerSlide = () => {
   const [currentPartner, setCurrentPartner] = useState(0);
   const goToNext = () => {
+    if (currentPartner === flagPics.length - 1){
+      setCurrentPartner(0)
+      return
+    }
     setCurrentPartner(currentPartner + 1)
   }
   const goToPrevious = () => {
+    if (currentPartner === 0){
+      setCurrentPartner(flagPics.length - 1)
+      return
+    }
     setCurrentPartner(currentPartner - 1)
   }
 
   return (
-    <div className='partnersContainer'>
-      <div className='flagsContainer'>
-        <button onClick={goToPrevious}>《</button>
-        <img src= {flagPics[currentPartner]} alt="partners flag pics" className='flagImage' />
-        <button onClick={goToNext}> 》</button>
-      </div>
+   
+    <div className='flagsContainer'>
+      <button onClick={goToPrevious} className='prev'>《</button>
+      <div className='partnerImgContainer'><img src= {flagPics[currentPartner]} alt="partners flag pics" className='flagImage' /></div>
+      <button onClick={goToNext} className='next' > 》</button>
     </div>
+
   )
 }
 
