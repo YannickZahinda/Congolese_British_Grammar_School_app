@@ -6,8 +6,8 @@ import {eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg6} from '
 
 
 const App = () => {
-  //remember to add the pics in the backend for the url so whenever the backend runs, the image does too
-  const slides = [
+  
+    const slides = [
     {url: eleveimg1},
     {url: eleveimg2},
     {url: eleveimg3},
