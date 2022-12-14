@@ -9,6 +9,7 @@ import eleveimg11 from './eleveimg11.jpeg'
 import EPSTFlag from './EPST pic.jpeg'
 import gouvpic from './gouv pic.jpeg'
 import lualabaflag from './lualabaflag pic.png'
+import cbglogo from './CBGClogo.png'
 
 
 export {
@@ -22,5 +23,6 @@ export {
   eleveimg11,
   EPSTFlag,
   gouvpic,
-  lualabaflag
+  lualabaflag,
+  cbglogo
 }

@@ -34,6 +34,7 @@ const App = () => {
           <Content />
         </div>
       </main>
+      <Footer />
     </div>
   )
 }

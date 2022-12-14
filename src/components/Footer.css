@@ -1,0 +1,41 @@
+.footer {
+    background-color: #184C72;
+    color: rgba(255, 255, 255, 0.806);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 35px;
+    padding: 30px;
+    font-size: 12px;
+  }
+  
+  .logo-footer{
+    width: 70px;
+    height: 70px;
+    border-radius: 15px;
+  }
+  
+  .footer-logo-container {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 20px;
+  }
+  
+  .footer-logo-container h1 {
+      align-self: center;
+      font-weight: bolder;
+      color: white;
+  }
+  .addresseContainer{
+      display: flex;
+      gap: 20px;
+  }
+  
+  .addresseContainer ion-icon {
+      font-size: 50px;
+      color: #66a848;
+  }
+  
+  .footer-links{
+      color: #66a848;
+  }
