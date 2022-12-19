@@ -25,18 +25,16 @@
 
 .navbar{
   /* position: relative; */
-  background-color: #184C72;
-  padding: 30px;
+  background-color: white;
+  padding: 10px;
   height: max-content;
   display: flex;
   justify-content: space-between;
   gap: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  margin-bottom: 30px;
 }
 
 .logocbg{
-  border: 4px solid rgb(250, 247, 247);
   border-radius: 30%;
   width: max-content;
   color: white;
@@ -49,18 +47,17 @@
   font-weight: 700;
   font-family: 'Inter', sans-serif;
   gap: 20px;
-  color: rgb(246, 248, 250);
+  color: #184C72;
   padding: 20px;
 }
 
 .link{
-  
   align-self: center;
 }
 
 .link > a {
     text-decoration: none;
-    color: rgb(246, 248, 250);
+    color: #184C72;
 }
 
 .link-none {
@@ -70,6 +67,20 @@
 .logoimage{
   width: 130px;
   height: 130px;
-  border-radius: 27%;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* border-radius: 27%; */
+}
+
+/*===============Nav popup================*/
+
+.navpopup {
+  background-color: blueviolet;
+  padding: 10px;
+}
+
+.navpopup ul {
+  list-style-type: none;
+}
+
+.navpopup ul li {
+  border-color: 1px solid #000;
 }

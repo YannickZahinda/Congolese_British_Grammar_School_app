@@ -18,10 +18,10 @@ const UpperNav = () => {
     <>
     <div className='uppernav'>
         <div className='socialIcons'>
-            <img src={facebook} alt="facebook icon" style={iconStyle} />
-            <img src={youtube} alt="youtube icon"  style={iconStyle}/>
-            <img src={twitter} alt="twitter icon"  style={iconStyle}/>
-            <img src={instagram} alt="instagram icon" style={iconStyle}/>
+          <ion-icon name="logo-facebook"></ion-icon>
+          <ion-icon name="logo-youtube"></ion-icon>
+          <ion-icon name="logo-twitter"></ion-icon>
+          <ion-icon name="logo-instagram"></ion-icon>
         </div>
         <div className="wrap">
             <div className="search">
@@ -31,11 +31,11 @@ const UpperNav = () => {
                 </button>
             </div>
         </div>
-        <div>
+        <div className='contact-icon'>
             <ion-icon name="mail"></ion-icon>
             <span className={smallScreen ? 'none' : 'block'}>Email: direction2cbgschool-cd.org</span>
         </div>
-        <div>
+        <div className='contact-icon'>
             <ion-icon name="call"></ion-icon>
             <span className={smallScreen ? 'none' : 'block'}>Contact +243 974 469 299</span>
         </div>

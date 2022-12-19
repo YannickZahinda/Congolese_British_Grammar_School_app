@@ -19,16 +19,16 @@ const variants = {
 const ImageSlider = ({slides}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderStyles = {
-    width: '80%',
+    width: '100%',
     height: '100%',
-    padding: '15px',
+    // padding: '15px',
     position: 'relative',
     margin: '0 auto'
   }
   const slideStyles = {
     width: '100%',
     height: '100%',
-    borderRadius: '10px',
+    // borderRadius: '10px',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     objectFit: 'cover',

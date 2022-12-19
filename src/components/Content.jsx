@@ -3,8 +3,8 @@ import './Content.css'
 import ReadMore from './ReadMore';
 import { EPSTFlag, gouvpic, lualabaflag, promo } from '../assets';
 import { eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg11 } from '../assets';
-import { AnimatePresence, motion } from 'framer-motion'
-// import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
+import EmbededYoutube from './EmbededYoutube';
 
 const images = [eleveimg1,eleveimg11,eleveimg2,eleveimg3,eleveimg4,eleveimg5]
 const flagPics = [lualabaflag,EPSTFlag,gouvpic]
@@ -104,8 +104,10 @@ const Content = () => {
     <div>
       <div className="mot_promoteur">
         <div className='prom-pic-container'>
-          <img src={promo} alt="promoteur image" className='promo-picture' />
-          <p> Promotrice Madame Sylvie Kafat</p>
+          <figure>
+            <img src={promo} alt="promoteur image" className='promo-picture' />
+          </figure>
+          <span> Promotrice  Madame Sylvie Kafat</span>
         </div>
         <div className='content'>
           <h1 className='promoname'>Mot d'accueil de la Promotrice</h1>
@@ -144,10 +146,6 @@ const Content = () => {
         </p>
       </div>
       <div className='sectionsContainer'>
-        {/* <div className='cardSectionLogo'>
-          <h1 className='heading'>SECTIONS DE L'ECOLE</h1>
-          <img src={images[0]} alt="" className='headingImage' />
-        </div> */}
         <h1 className='heading'>SECTIONS DE L'ECOLE</h1>
         <div className="cardGrid">
           <div className="sectionMaternelle">
@@ -189,16 +187,16 @@ const Content = () => {
           </div>
         </div>
       </div>
+      <EmbededYoutube EmbedId = "liw4lhuwvsk"/>
       <div className='philosophie'>
         <div className='philosophie-content'>
-          <h1>Philosophie et valeurs Educatives</h1>
+          <h1>Philosophie et valeurs Educatives</h1> <br />
           <p>
-            CBG SCHOOL est un établissement scolaire soucieux de la formation intégrale des enfants.
+            CBG SCHOOL est un établissement scolaire soucieux de la formation intégrale des enfants. <br /> <br />
             Visant l'excellence, les programmes et les cours dispensés visent à doter les élèves des connaissances et les capacités nécessaires à 
             faire face aux multiples défis du 21ième siècle. Pour atteindre notre vision, nous offrons les formations basées sur des valeurs humanistes telles que : la citoyenneté responsable, 
             l'esprit du leadership, l'entraide et la résilience.
-            La collaboration avec les parents est impérieuse afin de mettre en pratique les valeurs éducatives dans un climat familial serein.
-            
+            La collaboration avec les parents est impérieuse afin de mettre en pratique les valeurs éducatives dans un climat familial serein. <br /> <br />
             L'école offre un enseignement personnalisé, garanti par des classes à petit effectif avec outils didactiques adéquats, un corps professoral qualifié et dévoué.
             Les sessions de renforcement des capacités sont mises en place en faveur du personnel enseignant afin de s'adapter au dynamisme mondial.
           </p>

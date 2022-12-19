@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import CBGClogo  from '../assets/CBGClogo.png';
 import { navLinks } from '../constants';
 import './Navbar.css';
@@ -9,6 +9,16 @@ const Navbar = () => {
  const smallScreen = useMediaQuery('(max-width:600px )');
 //  const smallScreen = useMediaQuery('(max-width: 992px)');
 
+ const [isHovering, setIsHovering] = useState(false);
+
+ const handleMouseOver = () => {
+  setIsHovering(true)
+ }
+
+ const handleMouseOut = () => {
+  setIsHovering(false)
+ }
+
   return (
     <>
     <div className='navbar'>
@@ -18,9 +28,15 @@ const Navbar = () => {
       <ul className='navlinks'>
         {navLinks.map((nav, index) => (
           <li key={nav.id} className={smallScreen ? 'link-none' : 'link'}>
-            <a href={`#${nav.id}`} className='text-black'>
+            <a href={`#${nav.id}`} className='text-black'  onMouseOver = {handleMouseOver} onMouseOut= {handleMouseOut}>
               {nav.title} 
             </a> 
+            {nav.title === 'Connexions' ? isHovering && (<div className='navpopup' >
+              <ul>
+                <li>Connexion parents</li>
+                <li>Connexion eleves</li>
+              </ul>
+            </div>) : handleMouseOut}
           </li>
         ))}
       </ul>
