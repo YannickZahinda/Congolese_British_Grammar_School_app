@@ -16,17 +16,13 @@ const App = () => {
     {url: eleveimg6}
   ]
 
-  const containerStyles = {
-    with: '100%',
-    height: '550px'
-  }
 
   return (
     <div>
       <UpperNav />
       <Navbar />
       <main>
-        <div style={containerStyles} className='sliderContainer'>
+        <div className='containerStyles'>
           <ImageSlider slides = {slides} />
         </div>
         <div>
