@@ -1,52 +1,48 @@
 
 .mot_promoteur{
-    position: relative;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #184C72;
     padding: 50px;
     color: #e7ebed;
     margin: 30px;
     display: flex;
-    border-radius: 15%;
 }
 
-.mot_promoteur::before, .mot_promoteur::after {
-    content: '';
-    position: absolute;
-    border-bottom: 70px solid #184C72;
-    border-left: 40px solid transparent;
-    border-right: 40px solid transparent;
-    top: 70px;
-    left: -10px;
-    transform: rotate(140deg);
-}
-
-.mot_promoteur::after {
-    left: auto;
-    right: -10px;
-    transform: rotate(140deg);
+.mot_promoteur:hover {
+    transition: 0.5s ease-in;
+    background-color: rgba(235, 231, 231, 0.909);
 }
 
 .content {
     width: 80%;
-    color: #e7ebedc4;
+    color: #313233c4;
 }
 
 .prom-pic-container{
     padding: 10px;
 }
 
-.prom-pic-container > p {
+.prom-pic-container > span {
     font-size: 20px;
     font-weight: bolder;
     padding: 10px;
-    color: rgb(255, 253, 253);
+    color: rgb(12, 12, 12);
+    text-align: start;
+    width: 100%;
 }
 
 .heading {
     font-size: 40px;
     text-align: center;
     font-weight: bolder;
+}
+
+figure {
+    width: max-content;
+}
+
+figure span {
+    color: #000;
+    font-size: 20px;
 }
 
 .promo-picture{
@@ -70,7 +66,7 @@ caption {
     font-weight: bold;
     font-size: 35px;
     margin: 15px;
-    color: #fff;
+    color: rgb(27, 26, 26);
 }
 
 
@@ -174,7 +170,7 @@ caption {
     gap: 20px;
     padding: 30px;
     justify-content: center;
-    background-color: #65AA45;
+    background-color: #184C72;
     height: max-content;
     flex-wrap: wrap;
     flex-direction: column;

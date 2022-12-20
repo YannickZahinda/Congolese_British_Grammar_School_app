@@ -106,8 +106,8 @@ const Content = () => {
         <div className='prom-pic-container'>
           <figure>
             <img src={promo} alt="promoteur image" className='promo-picture' />
+            <span> Promotrice  Madame <br /> Sylvie Kafat</span>
           </figure>
-          <span> Promotrice  Madame Sylvie Kafat</span>
         </div>
         <div className='content'>
           <h1 className='promoname'>Mot d'accueil de la Promotrice</h1>
@@ -187,7 +187,7 @@ const Content = () => {
           </div>
         </div>
       </div>
-      <EmbededYoutube EmbedId = "liw4lhuwvsk"/>
+      <div><EmbededYoutube EmbedId = "liw4lhuwvsk"/></div>
       <div className='philosophie'>
         <div className='philosophie-content'>
           <h1>Philosophie et valeurs Educatives</h1> <br />
