@@ -6,6 +6,15 @@
   object-fit: cover;
 }
 
+.image-content {
+  position: absolute;
+  font-size: 35px;
+  color: #ffffff;
+  font-weight: 500;
+  top: 105px;
+  left: 100px;
+}
+
 
 
 .dotsStyles {
@@ -50,3 +59,4 @@
     z-index: 1;
     cursor: pointer
 }
+
