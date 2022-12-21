@@ -3,6 +3,7 @@
   height: 100%;
   position: relative;
   margin: 0 auto;
+  object-fit: cover;
 }
 
 
@@ -13,9 +14,9 @@
   font-size: 20px;
 }
 
-.dotsContainerStyle {
+.dotsContainerStyles {
   display: flex;
-  justify-content: center
+  justify-content: center;
 }
 
 .slideStyles {

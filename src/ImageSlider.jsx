@@ -97,7 +97,7 @@ const ImageSlider = ({slides}) => {
           alt="images eleves" 
           className='sliderStyles'
         />
-        <h1>Congolese British Grammar School </h1>
+        <h1>Congoles British Grammar School (CBGS) </h1>
 
       <div className='dotsContainerStyles'>
         {slides.map((slide, slideIndex) => (
