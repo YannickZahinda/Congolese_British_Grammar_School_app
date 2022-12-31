@@ -13,6 +13,7 @@ const EmbededYoutube = ({EmbedId}) => {
          allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; '
          allowFullScreen
          title='Cbgschool class session'
+         style={{borderRadius : '12px'}}
         />
     </div>
   )

@@ -102,7 +102,7 @@ const Content = () => {
   
   return (
     <div>
-      <div className="mot_promoteur">
+      {/* <div className="mot_promoteur">
         <div className='prom-pic-container'>
           <figure>
             <img src={promo} alt="promoteur image" className='promo-picture' />
@@ -132,8 +132,8 @@ const Content = () => {
             Madame Sylvie Kafat PROMOTRICE
           </ReadMore>
         </div>
-      </div>
-      <div className='a-propos-container'>
+      </div> */}
+      {/* <div className='a-propos-container'>
         <h1 className='heading'>A propos</h1>
         <SlidePict /> <br /> <br />
         <p>
@@ -144,8 +144,8 @@ const Content = () => {
           confidents et bien outillés pour leur prochaine étape de la vie. L'école bénéficie du partenariat international avec les écoles britanniques de renom pour le renforcement de capacité du personnel enseignant. L'apprentissage 
           adapté aux examens d'évaluation du système éducatif anglais.
         </p>
-      </div>
-      <div className='sectionsContainer'>
+      </div> */}
+      {/* <div className='sectionsContainer'>
         <h1 className='heading'>SECTIONS DE L'ECOLE</h1>
         <div className="cardGrid">
           <div className="sectionMaternelle">
@@ -186,7 +186,7 @@ const Content = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
       <div><EmbededYoutube EmbedId = "liw4lhuwvsk"/></div>
       <div className='philosophie'>
         <div className='philosophie-content'>
