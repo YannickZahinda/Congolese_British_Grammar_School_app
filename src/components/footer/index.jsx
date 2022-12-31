@@ -1,6 +1,6 @@
 import React from 'react'
-import {cbglogo} from '../assets'
-import './Footer.css'
+import {cbglogo} from '../../assets'
+import './style.css'
 
 const Footer = () => {
   return (

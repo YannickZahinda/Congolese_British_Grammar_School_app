@@ -1,8 +1,15 @@
 import React from 'react'
 import './App.css'
 import { Navbar, Footer, Skillpresentation, UpperNav, Content} from './components'
-import ImageSlider from './ImageSlider'
+import ImageSlider from './components/imageSlider'
 import {eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg6} from './assets'
+import Slider from './components/carousel'
+import ScrollYaxis from './components/scrollBar'
+import Dirideants from './components/dirigeants'
+import Valeurs from './components/valeurs'
+import Philosophie from './components/philosophie'
+import Apropos from './components/apropos'
+import SectionOrganisées from './components/sectionOrganisées'
 
 
 const App = () => {
@@ -23,14 +30,33 @@ const App = () => {
       <Navbar />
       <main>
         <div className='containerStyles'>
-          <ImageSlider slides = {slides} />
+          {/* <ImageSlider slides = {slides} /> */}
+          <Slider slides = {slides}/>
+        </div>
+        <div className='mt-[200px] bg-slate-300 h-[20%]'>
+          <ScrollYaxis/>
+          {/* <Skillpresentation /> */}
         </div>
         <div>
-          <Skillpresentation />
-          <Content />
+          <Dirideants/>
+        </div>
+        <div>
+          <Valeurs/>
+        </div>
+        <div>
+           <Philosophie/>
+        </div>
+        <div>
+        <Apropos/>
+        </div>
+        <div>
+          <SectionOrganisées/>
+        </div>
+        <div>
+          {/* <Content /> */}
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   )
 }

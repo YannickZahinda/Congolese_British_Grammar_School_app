@@ -1,10 +1,6 @@
 import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
-import facebook from '../assets/Vector.png'
-import youtube from '../assets/bi_youtube.png'
-import twitter from '../assets/mdi_twitter.png'
-import instagram from '../assets/uil_instagram-alt.png'
-import './UpperNav.css'
+import './style.css'
 
 const UpperNav = () => {
     const iconStyle = {

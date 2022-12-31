@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import './Content.css'
-import ReadMore from './ReadMore';
-import { EPSTFlag, gouvpic, lualabaflag, promo } from '../assets';
-import { eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg11 } from '../assets';
+import './index.css'
+import ReadMore from '../ReadMore';
+import { EPSTFlag, gouvpic, lualabaflag, promo } from '../../assets';
+import { eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg11 } from '../../assets';
 import { motion } from 'framer-motion'
-import EmbededYoutube from './EmbededYoutube';
+import EmbededYoutube from '../EmbededYoutube';
 
 const images = [eleveimg1,eleveimg11,eleveimg2,eleveimg3,eleveimg4,eleveimg5]
 const flagPics = [lualabaflag,EPSTFlag,gouvpic]

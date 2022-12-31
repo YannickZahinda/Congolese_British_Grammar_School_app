@@ -1,8 +1,8 @@
 import React from 'react'
 import useMediaQuery from '@mui/material/useMediaQuery';
-import './Skillpresentation.css'
-import teacher from '../assets/twemoji_woman-teacher.png'
-import credential from '../assets/Diploma.png'
+import './style.css'
+import teacher from '../../assets/twemoji_woman-teacher.png'
+import credential from '../../assets/Diploma.png'
 
 
 const Skillpresentation = () => {
