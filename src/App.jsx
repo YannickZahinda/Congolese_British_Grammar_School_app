@@ -55,8 +55,10 @@ const App = () => {
         <div>
           {/* <Content /> */}
         </div>
+        <div>
+           <Footer />
+        </div>
       </main>
-      {/* <Footer /> */}
     </div>
   )
 }
