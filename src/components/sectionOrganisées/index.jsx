@@ -1,41 +1,39 @@
 import React from 'react'
+import Maternelle from '../../assets/maternelle.svg'
+import Primaire from '../../assets/primaire.svg'
+import Secondaire from '../../assets/secondaire.svg'
 
 const SectionOrganisées = () => {
   return (
-    <div className=' w-[100%] pt-4 m-auto'>
-    <h1 className='text-3xl font-bold pl-[70px] pt-[70px]'>Nos valeurs</h1>
-    {/* <div className="flex justify-center gap-8  h-[160px] bg-gray-400"> */}
-    <section class="text-gray-600 body-font">
-  <div class="container px-5 py-[70px] mx-auto">
+    <div className=' w-[100%]  m-auto bg-[#FFF4DF]'>
+    <h1 className='text-3xl font-bold pl-[70px] pt-[70px]'>Sections organisées</h1>
+    <section class="text-gray-600 ">
+  <div class="container px-5 py-[70px] mx-auto" >
     <div class="flex  -mx-4 -mb-10 text-center">
-      <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1201x501"/>
+      <div class="sm:w-1/2 mb-10 py-6 bg-[#9E857B] rounded-lg">
+      <h2 class="title-font text-2xl font-bold text-gray-900 mb-4">MATERNELLE</h2>
+        <div class=" h-64 overflow-hidden">
+          <img alt="content" class="object-cover object-center h-full w-full" src={Maternelle}/>
         </div>
-        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Buy YouTube Videos</h2>
-        <p class="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-        <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+        <button class="flex mx-auto mt-6 text-white bg-[#D13C3F] border-0 py-3 px-[20px] font-bold focus:outline-none hover:text-[#D13C3F] hover:border hover:border-[#D13C3F] hover:bg-[#fff] rounded">DETAIL SUR LA SECTION</button>
       </div>
-      <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1202x502"/>
+      <div class="sm:w-1/2 mb-10 py-6 bg-[#AADCB9] rounded-lg ml-5">
+      <h2 class="title-font text-2xl font-bold text-gray-900 mb-4">PRIMAIRE</h2>
+        <div class=" h-64 overflow-hidden">
+          <img alt="content" class="object-cover object-center h-full w-full" src={Primaire}/>
         </div>
-        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">The Catalyzer</h2>
-        <p class="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-        <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+        <button class="flex mx-auto mt-6 text-white bg-[#D13C3F] border-0 py-3 px-[20px] font-bold focus:outline-none hover:text-[#D13C3F] hover:border hover:border-[#D13C3F] hover:bg-[#fff] rounded">DETAIL SUR LA SECTION</button>
       </div>
-      <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1202x502"/>
+      <div class="sm:w-1/2 mb-10 py-6 bg-[#96C2D8] rounded-lg ml-5">
+      <h2 class="title-font text-2xl font-bold text-gray-900 mb-4">SECONDAIRE</h2>
+        <div class=" h-64 overflow-hidden">
+          <img alt="content" class="object-cover object-center h-full w-full" src={Secondaire}/>
         </div>
-        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">The Catalyzer</h2>
-        <p class="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-        <button class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Button</button>
+        <button class="flex mx-auto mt-6 text-white bg-[#D13C3F] border-0 py-3 px-[20px] font-bold focus:outline-none hover:text-[#D13C3F] hover:border hover:border-[#D13C3F] hover:bg-[#fff] rounded">DETAIL SUR LA SECTION</button>
       </div>
     </div>
   </div>
 </section>
-      {/* </div> */}
     </div>
   )
 }

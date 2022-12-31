@@ -10,6 +10,7 @@ import Valeurs from './components/valeurs'
 import Philosophie from './components/philosophie'
 import Apropos from './components/apropos'
 import SectionOrganisées from './components/sectionOrganisées'
+import MotDeLaPromotrice from './components/motDeLaPromotrice'
 
 
 const App = () => {
@@ -51,6 +52,9 @@ const App = () => {
         </div>
         <div>
           <SectionOrganisées/>
+        </div>
+        <div>
+          <MotDeLaPromotrice/>
         </div>
         <div>
           {/* <Content /> */}
