@@ -12,6 +12,7 @@ import lualabaflag from './lualabaflag pic.png'
 import cbglogo from './CBGClogo.png'
 import accountPic from './account.png'
 import notificationIcon from './notif.png'
+import languageIcon from './language.png'
 
 
 export {
@@ -28,5 +29,6 @@ export {
   lualabaflag,
   cbglogo,
   accountPic,
-  notificationIcon
+  notificationIcon,
+  languageIcon
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import {accountPic} from "../../../assets"
-import {notificationIcon} from "../../../assets"
+import {languageIcon} from "../../../assets"
 
 const Dashboard = () => {
   return (
@@ -16,13 +16,27 @@ const Dashboard = () => {
           <li>Events</li>
         </ul>
       </aside>
-      <div className=" w-3/4 p-2">All teachers</div>
+      <div className=" w-3/4 p-2">
+        <div>
+          <input type="text" />
+          <div>
+            {/* <img src={languageIcon} alt="language icon" /> */}
+            <i class="cis-language"></i>
+            <select name="" id="">
+              <option value="langue">language</option>
+              <option value="anglais">anglais</option>
+              <option value="francais">francais</option>
+            </select>
+          </div>
+        </div>
+        All teachers
+      </div>
       <aside className=" w-1.8/4 p-2 bg-white rounded-l-2xl">
         <div className="flex justify-between">
-          <img src={notificationIcon} alt="notification icon" className="rounded-full h-auto " />
+          <ion-icon name="notifications" ></ion-icon>
           <div className="flex text-xs">
-            <img src={accountPic} alt="account pic" className="rounded-full" />
-            <select name="">
+            <img src={accountPic} alt="account pic"  className="rounded-full" />
+            <select name="select">
               <option value="accountsetting">Account settings</option>
               <option value="logout">logout</option>
             </select>
