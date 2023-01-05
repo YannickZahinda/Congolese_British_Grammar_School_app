@@ -24,6 +24,7 @@ function App({slides}) {
   };
 
   return (
+    <div className='containerStyles'>
     <div className='max-w-[100vw] h-[780px] w-full m-auto py-2  relative group'>
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
@@ -49,6 +50,7 @@ function App({slides}) {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }

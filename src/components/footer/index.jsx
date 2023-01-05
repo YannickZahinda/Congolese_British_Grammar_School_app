@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div>
-        <div className='footer-logo-container'> <img src={cbglogo} alt="logo footer" className='logo-footer' /><h1>CBG SCHOOL</h1></div>
+        <div className='footer-logo-container'> <img src={cbglogo} alt="logo footer" className='logo-footer' /><h1>CONGOLESE BRITISH GRAMMAR SCHOOL</h1></div>
         <p>
           The school provides the national curriculum in line with the Ministry of 
           Education an the British curriculu for nursery, primary and secondary school. 

@@ -25,17 +25,15 @@ const App = () => {
 
 
   return (
-    <div>
-      <UpperNav />
-      <Navbar />
+    <>
+        <UpperNav />
+        <Navbar />
       <main>
         <div className='containerStyles'>
-          {/* <ImageSlider slides = {slides} /> */}
           <Slider slides = {slides}/>
         </div>
         <div className='mt-[200px] bg-slate-300 h-[20%]'>
           <ScrollYaxis/>
-          {/* <Skillpresentation /> */}
         </div>
         <div>
           <Dirideants/>
@@ -53,13 +51,10 @@ const App = () => {
           <SectionOrganisées/>
         </div>
         <div>
-          {/* <Content /> */}
-        </div>
-        <div>
            <Footer />
         </div>
       </main>
-    </div>
+    </>
   )
 }
 

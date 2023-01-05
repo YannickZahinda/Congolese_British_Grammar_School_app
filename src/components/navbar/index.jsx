@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CBGClogo from "../../assets/CBGClogo.png";
-// import { navLinks } from "../constants";
+import { Link } from "react-router-dom";
 import "./style.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
@@ -32,13 +32,15 @@ const Navbar = () => {
               <li>Activités</li>
               <li>Contactez-nous</li>
               <li>Connexion</li>
-              <li>S'enregistrer</li>
+              <li>
+                <Link to="/Dashboard">S'enregistrer</Link>
+              </li>
             </ul>
           </div>
           <div className='flex justify-between items-center pt-6'>
             <div className='w-[62%]'>
               <form>
-                <div class='relative'>
+                <div className='relative'>
                   <input
                     type='search'
                     id='default-search'

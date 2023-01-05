@@ -4,6 +4,7 @@ import React from 'react'
 const ScrollYaxis = () => {
   return (
       <>
+      <div className='mt-[200px] bg-slate-300 h-[20%]'>
     <marquee className="relative flex overflow-x-hidden">
     <div className="py-12 animate-marquee whitespace-nowrap flex">
       <h1 className="text-6xl mx-4 font-bold text-white">NOTRE</h1>
@@ -32,7 +33,7 @@ const ScrollYaxis = () => {
       <h1 className="text-6xl mx-4 font-bold text-white">CONNAISSANCE</h1>
     </div>
   </marquee>
-  {/* <marquee>This text will scroll from right to left</marquee> */}
+  </div>
       </>
 
   
