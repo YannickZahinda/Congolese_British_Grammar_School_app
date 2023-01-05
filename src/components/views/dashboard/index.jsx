@@ -1,4 +1,6 @@
 import React from "react";
+import {accountPic} from "../../../assets"
+import {notificationIcon} from "../../../assets"
 
 const Dashboard = () => {
   return (
@@ -15,12 +17,20 @@ const Dashboard = () => {
         </ul>
       </aside>
       <div className=" w-3/4 p-2">All teachers</div>
-      <aside className=" w-1/4 p-2 bg-white rounded-l-2xl">
-        <div>logo</div>
-        <div>account</div>
+      <aside className=" w-1.8/4 p-2 bg-white rounded-l-2xl">
+        <div className="flex justify-between">
+          <img src={notificationIcon} alt="notification icon" className="rounded-full h-auto " />
+          <div className="flex text-xs">
+            <img src={accountPic} alt="account pic" className="rounded-full" />
+            <select name="">
+              <option value="accountsetting">Account settings</option>
+              <option value="logout">logout</option>
+            </select>
+          </div>
+        </div>
         <div>
-          <div class="flex items-center justify-center py-8 px-4">
-            <div class="max-w-sm w-full shadow-lg rounded-xl">
+          <div class="flex flex-col items-center justify-center py-8 px-4">
+            <div class="max-w-sm w-full rounded-xl mb-4">
               <div class="md:p-8 p-5 bg-[#F0F7FF] bg-white rounded-xl">
                 <div class="px-4 flex items-center justify-between">
                   <span
@@ -367,6 +377,9 @@ const Dashboard = () => {
                   </table>
                 </div>
               </div>
+            </div>
+            <div className="bg-[#F0F7FF] h-9 rounded-xl max-w-sm w-full py-8 px-10">
+              <h3>No available plan</h3>
             </div>
           </div>
         </div>

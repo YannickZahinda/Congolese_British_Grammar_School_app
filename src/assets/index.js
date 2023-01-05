@@ -10,6 +10,8 @@ import EPSTFlag from './EPST pic.jpeg'
 import gouvpic from './gouv pic.jpeg'
 import lualabaflag from './lualabaflag pic.png'
 import cbglogo from './CBGClogo.png'
+import accountPic from './account.png'
+import notificationIcon from './notif.png'
 
 
 export {
@@ -24,5 +26,7 @@ export {
   EPSTFlag,
   gouvpic,
   lualabaflag,
-  cbglogo
+  cbglogo,
+  accountPic,
+  notificationIcon
 }
