@@ -12,6 +12,7 @@ import Apropos from './components/apropos'
 import SectionOrganisées from './components/sectionOrganisées'
 import MotDeLaPromotrice from './components/motDeLaPromotrice'
 import Video from './components/video'
+import FormationsOrganisees from './components/formations'
 
 
 const App = () => {
@@ -59,6 +60,9 @@ const App = () => {
         </div>
         <div className=''>
           <Video/>
+        </div>
+        <div>
+          <FormationsOrganisees/>
         </div>
         <div>
         </div>
