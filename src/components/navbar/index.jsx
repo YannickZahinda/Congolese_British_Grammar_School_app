@@ -3,6 +3,8 @@ import CBGClogo from "../../assets/CBGClogo.png";
 // import { navLinks } from "../constants";
 import "./style.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Dropdown } from 'semantic-ui-react'
+import Choice from '../../helpers/dropdowns'
 
 const Navbar = () => {
   const smallScreen = useMediaQuery("(max-width:600px )");
@@ -18,13 +20,19 @@ const Navbar = () => {
     setIsHovering(false);
   };
 
+  const options = [
+    { key: 1, text: 'Choice 1', value: 1 },
+    { key: 2, text: 'Choice 2', value: 2, disabled: true },
+    { key: 3, text: 'Choice 3', value: 3 },
+  ]
+
   return (
     <>
       <div className='flex justify-between'>
         <div className='pl-4'>
           <img src={CBGClogo} alt='Logo' className='logoimage' />
         </div>
-        <div className=' pt-4 pb-6'>
+        <div className='pt-4 pb-6 '>
           <div>
             <ul className='flex gap-20 mr-4'>
               <li>A propos</li>
@@ -35,7 +43,7 @@ const Navbar = () => {
               <li>S'enregistrer</li>
             </ul>
           </div>
-          <div className='flex justify-between items-center pt-6'>
+          <div className='flex items-center justify-between pt-6'>
             <div className='w-[62%]'>
               <form>
                 <div class='relative'>
@@ -56,12 +64,12 @@ const Navbar = () => {
             </div>
             <div>
               <ul className='flex gap-20 mr-4'>
-                <li className='flex justify-center items-center cursor-pointer'>
+                <li className='flex items-center justify-center cursor-pointer'>
                   <i className='material-symbols-outlined'>language</i>
                   Langue
                   <i className='material-symbols-outlined'>arrow_drop_down</i>
                 </li>
-                <li className='flex justify-center items-center cursor-pointer'>
+                <li className='flex items-center justify-center cursor-pointer'>
                   <i className='material-symbols-outlined'>light_mode</i>
                   Mode
                   <i className='material-symbols-outlined'>arrow_drop_down</i>
