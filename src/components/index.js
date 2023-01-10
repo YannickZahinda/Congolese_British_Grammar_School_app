@@ -1,8 +1,9 @@
-import Navbar from './Navbar'
-import Footer from './Footer'
-import Skillpresentation from './Skillpresentation'
-import UpperNav from './UpperNav';
+import Navbar from './navbar'
+import Footer from './footer'
+import Skillpresentation from './skillPresentention'
+import UpperNav from './upperNav';
 import Content from './content';
+import 'semantic-ui-css/semantic.min.css'
 
 export{
     Navbar,

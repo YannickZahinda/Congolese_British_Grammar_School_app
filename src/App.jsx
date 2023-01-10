@@ -1,37 +1,17 @@
 import React from 'react'
-import './App.css'
-import { Navbar, Footer, Skillpresentation, UpperNav, Content} from './components'
-import ImageSlider from './ImageSlider'
-import {eleveimg1, eleveimg2, eleveimg3, eleveimg4, eleveimg5, eleveimg6} from './assets'
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LandingPage from './components/landingPage'
+import Login from './components/login';
 
 const App = () => {
   
-    const slides = [
-    {url: eleveimg1},
-    {url: eleveimg2},
-    {url: eleveimg3},
-    {url: eleveimg4},
-    {url: eleveimg5},
-    {url: eleveimg6}
-  ]
-
-
   return (
-    <div>
-      <UpperNav />
-      <Navbar />
-      <main>
-        <div className='containerStyles'>
-          <ImageSlider slides = {slides} />
-        </div>
-        <div>
-          <Skillpresentation />
-          <Content />
-        </div>
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <Routes>
+      <Route path="/" element={<LandingPage />}/>
+      <Route path="/login" element={<Login />}/>
+      </Routes>
+    </Router>
   )
 }
 
