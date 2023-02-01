@@ -5,20 +5,12 @@ import "./style.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Dropdown } from 'semantic-ui-react'
 import Choice from '../../helpers/dropdowns'
+import Admissionpopup from '../popups/admissionpopup';
 
 const Navbar = () => {
   const smallScreen = useMediaQuery("(max-width:600px )");
-  //  const smallScreen = useMediaQuery('(max-width: 992px)');
 
-  const [isHovering, setIsHovering] = useState(false);
-
-  const handleMouseOver = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseOut = () => {
-    setIsHovering(false);
-  };
+  const [IsOpen, setIsOpen] = useState(false);
 
   const options = [
     { key: 1, text: 'Choice 1', value: 1 },
@@ -36,7 +28,7 @@ const Navbar = () => {
           <div>
             <ul className='flex gap-20 mr-4'>
               <li className='cursor-pointer'> <a href="#apropos">A propos</a> </li>
-              <li className='cursor-pointer'> <a href="#">Admission</a> </li>
+              <li className='cursor-pointer'> <a href="#" onClick = {() => setIsOpen(true)}>Admission</a> </li>
               <li className='cursor-pointer'> <a href="#">Activités</a> </li>
               <li className='cursor-pointer'> <a href="#">Contactez-nous</a> </li>
               <li className='cursor-pointer'> <a href="#"> Connexion</a></li>
@@ -84,6 +76,12 @@ const Navbar = () => {
           <div className='menu-line'></div>
           <div className='menu-line'></div>
         </div>
+      </div>
+      <div className='rounded-lg absolute z-10 inset-x-20 top-20 bg-red-700'>
+          <Admissionpopup trigger={IsOpen} setTrigger = {setIsOpen}>
+            <h3 className='text-white p-2'>Admissions</h3>
+            <p className='text-white p-2'> SORRY ; ) ! You can't perform this action at this time <br /> Admission components is currently being developped by the technician <br /></p>
+          </Admissionpopup>
       </div>
     </>
   );
