@@ -40,7 +40,7 @@ const Navbar = () => {
           <div className='flex items-center justify-between pt-6'>
             <div className='w-[62%]'>
               <form>
-                <div class='relative'>
+                <div className='relative'>
                   <input
                     type='search'
                     id='default-search'

@@ -76,7 +76,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div class='h-screen w-1/2 relative '>
+      <div className='h-screen w-1/2 relative '>
         <div className='flex items-center content-center justify-center bg-red-300'>
           <p className='absolute text-white  w-[310px] text-3xl text-center'>
             L' école Congolese B.G.S. offre un cadre éducatif qui rassure la
