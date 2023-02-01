@@ -6,11 +6,13 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { Dropdown } from 'semantic-ui-react'
 import Choice from '../../helpers/dropdowns'
 import Admissionpopup from '../popups/admissionpopup';
+import Activités from '../popups/activitepopup';
 
 const Navbar = () => {
   const smallScreen = useMediaQuery("(max-width:600px )");
 
   const [IsOpen, setIsOpen] = useState(false);
+  const [Activite, setActivite] = useState(false);
 
   const options = [
     { key: 1, text: 'Choice 1', value: 1 },
@@ -29,7 +31,7 @@ const Navbar = () => {
             <ul className='flex gap-20 mr-4'>
               <li className='cursor-pointer'> <a href="#apropos">A propos</a> </li>
               <li className='cursor-pointer'> <a href="#" onClick = {() => setIsOpen(true)}>Admission</a> </li>
-              <li className='cursor-pointer'> <a href="#">Activités</a> </li>
+              <li className='cursor-pointer'> <a href="#" onClick = {() => setActivite(true)}>Activités</a> </li>
               <li className='cursor-pointer'> <a href="#">Contactez-nous</a> </li>
               <li className='cursor-pointer'> <a href="#"> Connexion</a></li>
               <li className='cursor-pointer'> <a href="#"> S'enregistrer</a></li>
@@ -82,6 +84,12 @@ const Navbar = () => {
             <h3 className='text-white p-2'>Admissions</h3>
             <p className='text-white p-2'> SORRY ; ) ! You can't perform this action at this time <br /> Admission components is currently being developped by the technician <br /></p>
           </Admissionpopup>
+      </div>
+      <div className='rounded-lg absolute z-10 inset-x-20 top-20 bg-[#CBD5E1]'>
+          <Activités trigger = {Activite} setTrigger = {setActivite}>
+            <h3 className='text-black p-2'>Activités</h3>
+            <p className='text-black p-2'>Il n'y a aucune activité recemment ajouté. Restez connecté.</p>
+          </Activités>
       </div>
     </>
   );
