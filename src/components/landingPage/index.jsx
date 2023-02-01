@@ -13,6 +13,7 @@ import MotDeLaPromotrice from '../motDeLaPromotrice'
 import Video from '../video'
 import FormationsOrganisees from '../formations'
 import Partenaires from '../partenaires'
+import EmailContact from '../email'
 
 const LandingPage = () => {
   
@@ -66,6 +67,9 @@ const LandingPage = () => {
         </div>
         <div>
           <Partenaires/>
+        </div>
+        <div>
+          <EmailContact />
         </div>
         <div>
           <Footer/>

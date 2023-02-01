@@ -32,7 +32,7 @@ const Navbar = () => {
               <li className='cursor-pointer'> <a href="#apropos">A propos</a> </li>
               <li className='cursor-pointer'> <a href="#" onClick = {() => setIsOpen(true)}>Admission</a> </li>
               <li className='cursor-pointer'> <a href="#" onClick = {() => setActivite(true)}>Activités</a> </li>
-              <li className='cursor-pointer'> <a href="#">Contactez-nous</a> </li>
+              <li className='cursor-pointer'> <a href="#contact">Contactez-nous</a> </li>
               <li className='cursor-pointer'> <a href="#"> Connexion</a></li>
               <li className='cursor-pointer'> <a href="#"> S'enregistrer</a></li>
             </ul>
