@@ -78,7 +78,7 @@ const Login = () => {
       </div>
       <div className='h-screen w-1/2 relative '>
         <div className='flex items-center content-center justify-center bg-red-300'>
-          <p className='absolute text-white  w-[310px] text-3xl text-center'>
+          <p className='absolute text-white  w-[310px] text-3xl text-center top-20 '>
             L' école Congolese B.G.S. offre un cadre éducatif qui rassure la
             communauté de la ville de Kolwezi...
           </p>
