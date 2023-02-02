@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CBGClogo from "../../assets/CBGClogo.png";
 // import { navLinks } from "../constants";
+import { Link } from "react-router-dom";
 import "./style.css";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Dropdown } from 'semantic-ui-react'
@@ -34,7 +35,7 @@ const Navbar = () => {
               <li className='cursor-pointer'> <a href="#" onClick = {() => setActivite(true)}>Activités</a> </li>
               <li className='cursor-pointer'> <a href="#contact">Contactez-nous</a> </li>
               <li className='cursor-pointer'> <a href="#"> Connexion</a></li>
-              <li className='cursor-pointer'> <a href="#"> S'enregistrer</a></li>
+              <li className='cursor-pointer'> <a href="#"> <Link to='/login'>S'enregistrer</Link></a></li>
             </ul>
           </div>
           <div className='flex items-center justify-between pt-6'>
