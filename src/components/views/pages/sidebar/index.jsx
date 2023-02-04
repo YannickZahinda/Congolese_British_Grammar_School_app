@@ -43,12 +43,12 @@ const Sidebar = () => {
           <Link to={item.path}>
             <li key={index}
              onClick={() => {item.path}} 
-             className="flex gap-2 hover:bg-[#D0DAC4] hover:border-solid hover:border-[#182C72] hover:border-l-2 pl-2 cursor-pointer">
+             className="flex gap-2 hover:bg-[#D0DAC4] hover:border-solid hover:border-[#182C72] hover:border-l-2 pl-2 cursor-pointer text-xl">
               <span className="self-center">
                 <img src={item.img} alt="home icon" />
               </span>
               <p> {item.name}</p>
-            </li>
+            </li> <br /> <br />
           </Link>
         ))}
     </ul>
