@@ -15,22 +15,22 @@ const Sidebar = () => {
 
   const menuItem = [
     {
-      path: "/home",
+      path: "/dashboard/home",
       name: "Home",
       img: homeIcon,
     },
     {
-        path: "/teachers",
+        path: "/dashboard/teachers",
         name: "Teachers",
         img: teacherIcon,
     },
     {
-        path: "/students",
+        path: "/dashboard/students",
         name: "Students",
         img: studentIcon
     },
     {
-        path: "/events",
+        path: "/dashboard/events",
         name: "Events",
         img: eventIcon,
       }

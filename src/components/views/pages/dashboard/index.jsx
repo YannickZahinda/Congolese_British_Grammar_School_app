@@ -4,6 +4,8 @@ import { accountPic } from "../../../../assets";
 import Teachers from "../teachers"
 import Calendar from "../asidecalendar";
 import Sidebar from "../sidebar";
+import DashboardComponent from "./dash_comp";
+
 // import { cisLanguage } from '@coreui/react';
 
 const Dashboard = () => {
@@ -38,8 +40,7 @@ const Dashboard = () => {
           <br />
           <h3>All teachers</h3>
           <div className="bg-white rounded-xl p-4">
-            <h3> Teachers</h3>
-            <Teachers />
+            <DashboardComponent />
           </div>
         </div>
         <aside className=" w-1.8/4 p-2 bg-white rounded-l-2xl">
