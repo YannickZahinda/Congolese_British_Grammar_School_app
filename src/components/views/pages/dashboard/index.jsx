@@ -2,7 +2,7 @@ import React from "react";
 // import {languageIcon} from "../../../assets"
 import { accountPic } from "../../../../assets";
 import Teachers from "../teachers"
-import Calendar from "../asidecalendar";
+import MyCalendar from "../asidecalendar/calendar";
 import Sidebar from "../sidebar";
 import DashboardComponent from "./dash_comp";
 
@@ -60,7 +60,7 @@ const Dashboard = () => {
           </div>
           <div>
             <div className="flex flex-col items-center justify-center py-8 px-4">
-              <Calendar />
+              <MyCalendar />
               <div className="bg-[#F0F7FF] h-9 rounded-xl max-w-sm w-full py-8 px-10">
                 <h3>No available plan</h3>
               </div>
