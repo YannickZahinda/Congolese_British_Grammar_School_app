@@ -9,7 +9,7 @@ const Login = () => {
   const procceedLogin = (e) => {
     e.preventDefault();
     if(validate()){
-      //implement code
+      // implement code
       console.log('Proceed');
       fetch('https://60d1-2c0f-eb68-643-b001-1444-ef95-306f-34a3.eu.ngrok.io/users/sign_in' + email).then((res) => {
         return res.json()
