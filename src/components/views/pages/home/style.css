@@ -14,7 +14,7 @@
 .courses__container,
 .message__container,
 .eleve__container {
-  background-color: red;
+  background-color: rgba(255, 0, 0, .2);
   border-radius: 15px;
   padding: 10px;
 }

@@ -11,101 +11,53 @@ const Teachers = () => {
     </div>
     <div className="bg-white rounded-xl p-4">
       <h3> Teachers</h3> <br />
-      <div className="grid gap-4 grid-cols-3 grid-rows-3">
-        <div className=" bg-[#F0F7FF] p-3 rounded-md">
-          <div className="border-solid border-b border-black flex gap-5 py-3">
-            <h5>Secondaire</h5>
-            <div>
-              <img
-                src={accountPic}
-                alt="teacher pic"
-                className="rounded-full w-2/2"
-              />
-            </div>
-            <div>...</div>
+      <div className="teacher__container">
+        <div className="upper__section">
+          <div className="education__level">
+            <span>Primary</span>
           </div>
-          <div className="flex justify-between border-solid border-b border-b text-[9px]">
-            <div>
-              <h3>Anni whisley</h3>
-              <p className="text-slate-500 text-[7px]">
-                +243992028232 <b></b>
-                annew@gmail.com
-              </p>
-            </div>
-            <div>
-              <h3>Cours dispense</h3>
-              <p className="text-slate-500 text-[7px]">
-                Education civique <br />
-                Informatique
-              </p>
-            </div>
+          <div className="avatar">
+            <img src={accountPic} alt="" />
           </div>
-          <div className="flex justify between border-solid border-b border-b text-[9px]">
-            <div>
-              <h3>Preferences</h3>
-              <p className="text-slate-500 text-[7px]">
-                +243992028232 <b></b>
-                annew@gmail.com
-              </p>
-            </div>
-            <div>
-              <h3>Classes encadrees</h3>
-              <p className="text-slate-500 text-[7px]">
-                Education civique <br />
-                Informatique
-              </p>
-            </div>
+          <div className="dots">
+            <span>...</span>
           </div>
         </div>
-        <div className=" bg-[#F0F7FF] p-3 rounded-md">
-          <div className="border-solid border-b border-black flex gap-5 py-3">
-            <h5>Secondaire</h5>
-            <div>
-              <img
-                src={accountPic}
-                alt="teacher pic"
-                className="rounded-full w-2/2"
-              />
-            </div>
-            <div>...</div>
+        <div className="middle__section">
+          <div className="middle__left">
+            <span className="name">Anny Whisley</span>
+            <span className="phone__number">+24399028232</span>
+            <span className="email">anney@gmail.com</span>
+            <ul className="socials">
+              <li className="social__item">LinkedIn</li>
+              <li className="social__item">LinkedIn</li>
+              <li className="social__item">LinkedIn</li>
+              <li className="social__item">LinkedIn</li>
+            </ul>
           </div>
-          <div className="flex justify between border-solid border-b border-b text-[9px]">
-            <div>
-              <h3>Anni whisley</h3>
-              <p className="text-slate-500 text-[7px]">
-                +243992028232 <b></b>
-                annew@gmail.com
-              </p>
-            </div>
-            <div>
-              <h3>Cours dispense</h3>
-              <p className="text-slate-500 text-[7px]">
-                Education civique <br />
-                Informatique
-              </p>
-            </div>
-          </div>
-          <div className="flex justify between border-solid border-b border-b text-[9px]">
-            <div>
-              <h3>Preferences</h3>
-              <p className="text-slate-500 text-[7px]">
-                +243992028232 <b></b>
-                annew@gmail.com
-              </p>
-            </div>
-            <div>
-              <h3>Classes encadrees</h3>
-              <p className="text-slate-500 text-[7px]">
-                Education civique <br />
-                Informatique
-              </p>
-            </div>
+          <div className="middle__right">
+            <span className="courses">Cours Dispenses</span>
+            <ul className="cours__list">
+              <li className="course__item">Education civique</li>
+              <li className="course__item">Informatique</li>
+              <li className="course__item">Chant</li>
+            </ul>
           </div>
         </div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+        <div className="bottom__section">
+          <div className="bottom__left">
+            <span className="class">Classes encadrees</span>
+            <ul className="class__list">
+              <li className="class__item">5eme</li>
+              <li className="class__item">4eme</li>
+              <li className="class__item">3ieme</li>
+            </ul>
+          </div>
+          <div className="bottom__right">
+            <span className="pref">Preferences</span>
+            <p>J'adore le Sport et faire du Sky</p>
+          </div>
+        </div>
       </div>
     </div>
     </>
