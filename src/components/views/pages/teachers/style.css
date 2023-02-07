@@ -1,0 +1,36 @@
+.teacher__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.teacher__content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.teacher__content p,
+.teacher__content li {
+  margin-bottom: 8px;
+  opacity: 0.5;
+  font-size: 0.9rem;
+}
+
+.upper__section,
+.middle__section,
+.bottom__section {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 5px;
+}
+
+.middle__section .name,
+.middle__section .courses,
+.bottom__section .class,
+.bottom__section .pref {
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 1;
+}

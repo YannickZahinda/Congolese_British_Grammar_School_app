@@ -1,6 +1,43 @@
 import React from "react";
 import { accountPic } from "../../../../assets";
+import './style.css'
+
 const Teachers = () => {
+  const teachers = [
+    {
+      education__level: "Primary",
+      name: "Anny Whisley",
+      photo: accountPic,
+      phone__number: "+243992028232",
+      address_email: "annew@gmail.com",
+      social__item: ['facebook__link', 'twitter__link'],
+      course__item: ['Education civique', 'Informatique', 'chant'],
+      class__item: ['4ieme', '5ieme', '3ieme'],
+      preferences: 'J\'adore le Sport et faire du Sky',
+    },
+    {
+      education__level: "Secondary",
+      name: "Jackson White",
+      photo: accountPic,
+      phone__number: "+243992028232",
+      address_email: "annew@gmail.com",
+      social__item: ['facebook__link', 'twitter__link'],
+      course__item: ['Education civique', 'Informatique', 'chant'],
+      class__item: ['4ieme', '5ieme', '3ieme'],
+      preferences: 'J\'adore le Sport et faire du Sky',
+    },
+    {
+      education__level: "Nursery",
+      name: "Jeanne Doe",
+      photo: accountPic,
+      phone__number: "+243992028232",
+      address_email: "annew@gmail.com",
+      social__item: ['facebook__link', 'twitter__link'],
+      course__item: ['Education civique', 'Informatique', 'chant'],
+      class__item: ['4ieme', '5ieme', '3ieme'],
+      preferences: 'J\'adore le Sport et faire du Sky',
+    }
+  ]
   return (
     <>
     <div className="flex justify-between mb-4">
@@ -12,52 +49,57 @@ const Teachers = () => {
     <div className="bg-white rounded-xl p-4">
       <h3> Teachers</h3> <br />
       <div className="teacher__container">
+        {teachers.map((teacher) => {
+        return(
+          <div className="bg-[#F0F7FF] p-3 rounded-md teacher__content">
         <div className="upper__section">
           <div className="education__level">
-            <span>Primary</span>
+            <p>{teacher.education__level}</p>
           </div>
           <div className="avatar">
-            <img src={accountPic} alt="" />
+            <img src={teacher.photo} alt="" className="rounded-full w-2/2"/>
           </div>
           <div className="dots">
-            <span>...</span>
+            <p>...</p>
           </div>
         </div>
         <div className="middle__section">
           <div className="middle__left">
-            <span className="name">Anny Whisley</span>
-            <span className="phone__number">+24399028232</span>
-            <span className="email">anney@gmail.com</span>
+            <p className="name">{teacher.name}</p>
+            <p className="phone__number">{teacher.phone__number}</p>
+            <p className="email">{teacher.address_email}</p>
             <ul className="socials">
-              <li className="social__item">LinkedIn</li>
-              <li className="social__item">LinkedIn</li>
-              <li className="social__item">LinkedIn</li>
-              <li className="social__item">LinkedIn</li>
+              {teacher.social__item.map((item) => 
+                <li className="social__item">{item}</li>
+              )}
             </ul>
           </div>
           <div className="middle__right">
-            <span className="courses">Cours Dispenses</span>
+            <p className="courses">Cours Dispenses</p>
             <ul className="cours__list">
-              <li className="course__item">Education civique</li>
-              <li className="course__item">Informatique</li>
-              <li className="course__item">Chant</li>
+              {teacher.course__item.map((course) =>
+              <li className="course__item">{course}</li>
+              )}
             </ul>
           </div>
         </div>
         <div className="bottom__section">
           <div className="bottom__left">
-            <span className="class">Classes encadrees</span>
+            <p className="class">Classes encadrees</p>
             <ul className="class__list">
-              <li className="class__item">5eme</li>
-              <li className="class__item">4eme</li>
-              <li className="class__item">3ieme</li>
+              {teacher.class__item.map((level) =>
+              <li className="class__item">{level}</li>
+              )}
             </ul>
           </div>
           <div className="bottom__right">
-            <span className="pref">Preferences</span>
-            <p>J'adore le Sport et faire du Sky</p>
+            <p className="pref">Preferences</p>
+            <p>{teacher.preferences}</p>
           </div>
         </div>
+      </div>
+        )
+      })}
       </div>
     </div>
     </>
