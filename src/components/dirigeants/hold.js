@@ -1,28 +1,4 @@
-import React from "react";
-import promotrice from '../../assets/promotrice.png'
-import fondateur from '../../assets/fondateur.png'
-import secretaire from '../../assets/secretaire.png'
-import './style.css'
-
 const Dirideants = () => {
-
-    const leader = [
-        {
-            name: 'Madame Sylvie Kafat',
-            post: 'Promotrice',
-            photo: promotrice,
-        },
-         {
-            name: 'Monsieur Kingsley Amani',
-            post: 'Fondateur',
-            photo: fondateur,
-        }, {
-            name: 'Madame Anne Wisley',
-            post: 'Secretaire',
-            photo: secretaire,
-        },
-
-    ]
   return (
     <div className=' w-[90%] pt-4 m-auto'>
       <h1 className='text-3xl font-bold'>Equipe Dirigeante</h1>
@@ -62,5 +38,3 @@ const Dirideants = () => {
     </div>
   );
 };
-
-export default Dirideants;
