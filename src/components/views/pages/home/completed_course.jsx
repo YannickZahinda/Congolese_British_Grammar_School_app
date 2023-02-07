@@ -1,6 +1,6 @@
 const CoursesCompleted = () => {
   return (
-    <div>These are the completetd courses</div>
+    <div className="courses__container">These are the completetd courses</div>
   );
 }
  

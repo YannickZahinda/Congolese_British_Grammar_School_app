@@ -1,6 +1,6 @@
 const MeilleursEleves = () => {
   return (
-    <div>These are best students</div>
+    <div className="eleve__container">These are best students</div>
   );
 }
  

@@ -3,15 +3,16 @@ import Performance from './performance'
 import CoursesCompleted from './completed_course'
 import MeilleursEleves from './meilleurs'
 import Messages from './messages'
+import './style.css'
 
 const Home = () => {
   return (
-    <>
-    <Performance />
-    <CoursesCompleted />
-    <Messages />
-    <MeilleursEleves />
-    </>
+    <div className='home__container'>
+      <Performance />
+      <CoursesCompleted />
+      <Messages />
+      <MeilleursEleves />
+    </div>
   )
 }
 

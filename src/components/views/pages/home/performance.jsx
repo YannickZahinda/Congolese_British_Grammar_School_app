@@ -1,6 +1,6 @@
 const Performance = () => {
   return (
-    <div>This is my Perfromance</div>
+    <div className="performance__container">This is Perfromance</div>
   );
 }
  
