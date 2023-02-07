@@ -31,7 +31,7 @@ const Dirideants = () => {
                 return(
                         <div className='promotrice' key={index}>
                             <div className="w-[260px] flex justify-center ">
-                                <img src={person.photo} className='w-[260px] h-[260px] object-cover -ml-12'/>
+                                <img src={person.photo} className='w-[260px] h-[310px] object-cover -ml-12'/>
                             </div>
                             <div className=" flex column justify-center text-center ">
                                 <h2 className="font-semibold">{person.name}</h2>
