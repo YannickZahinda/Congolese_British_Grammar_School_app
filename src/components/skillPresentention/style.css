@@ -6,6 +6,7 @@
     gap: 25px;
     padding: 15px;
     font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
 }
 
 .skillcard{
@@ -25,6 +26,10 @@
     align-self: center;
     color: black;
     margin: 10px;
+}
+
+.skillcard> p {
+    line-height: 30px;
 }
 
 .skillsheading > ion-icon {
