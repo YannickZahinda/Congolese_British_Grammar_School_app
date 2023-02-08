@@ -26,7 +26,7 @@ const Dirideants = () => {
   return (
     <div className=' w-[90%] pt-4 m-auto'>
       <h1 className='text-3xl font-bold'>Equipe Dirigeante</h1>
-      <div className="flex justify-center gap-8 ">
+      <div className="flex justify-center gap-16 ">
             {leader.map((person, index) => {
                 return(
                         <div className='promotrice' key={index}>

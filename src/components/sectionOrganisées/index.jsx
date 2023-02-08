@@ -5,6 +5,7 @@ import Secondaire from "../../assets/secondaire.svg";
 import SectionMaternellePopup from "../popups/sectionOrganisePopups/sectionMaternellePopup";
 import SectionPrimaire from "../popups/sectionOrganisePopups/sectionPrimairePopup";
 import SectionSecondairePopup from "../popups/sectionOrganisePopups/sectionSecondairePopUp";
+import './style.css'
 
 const SectionOrganisées = () => {
   const [Maternel, setMaternelle] = useState(false);
@@ -72,7 +73,7 @@ const SectionOrganisées = () => {
       </section>
       <SectionMaternellePopup trigger = {Maternel} setTrigger = {setMaternelle} >
          <h2>Section Maternelle </h2>
-         <p>
+         <p className="details">
            CBG-SCHOOL offre aux enfants de la maternelle la formation et l'encadrement visant la production d'expression orale du Français et de l'Anglais, les notions essentielles de la numérique, 
            d'hygiène, de l'environnement et des relations humaines. Les classes ont 
            les niveaux 1,2 et 3 dont la capacité est prévue de 20 à 30 élèves (3 salles).
@@ -80,7 +81,7 @@ const SectionOrganisées = () => {
       </SectionMaternellePopup>
       <SectionPrimaire trigger = {SecPrimaire} setTrigger={setSecPrimaire}>
         <h3>SECTION PRIMAIRE</h3>
-        <p>
+        <p className="details">
           Notre école est résolue à donner aux enfants une formation intégrale d'excellence en lecture,
           écriture, arithmétique. La formation vise la bonne compréhension de la matière dispensée, l'aisance dans l'expression en langue
           française et anglaise. Les classes de la 1ère ,2ième, 3ième ,4 ème , 5ième et 6ième avec classe parallèle 1A et 1B dont la capacité d'accueil est 30 à 35 élèves (12 Salles).
@@ -88,7 +89,7 @@ const SectionOrganisées = () => {
       </SectionPrimaire>
       <SectionSecondairePopup trigger = {SecSecondaire} setTrigger = {setSecSecondaire}>
         <h3>SECTION SECONDAIRE </h3>
-        <p>
+        <p className="details">
           Notre école s'assure qu'a l'issue de l'enseignement secondaire l'élève acquière la connaissance 
           générale et spécifique du monde qu'il entoure. La formation d'être un bon citoyen responsable pour contribuer 
           au développement de sa communauté et du pays. Elle vieille à la formation à la citoyenneté responsable afin de contribuer au développement
