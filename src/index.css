@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', Helvetica, sans-serif;
 }
 :root {
   --black-gradient: linear-gradient(
@@ -31,7 +31,7 @@ h4,
 h5,
 h6 {
   color: var(--color-heading);
-  font-family: Inter, sans-serif;
+  font-family: Inter, Helvetica, sans-serif;
 }
 
 h1 {
