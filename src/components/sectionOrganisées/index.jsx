@@ -12,7 +12,7 @@ const SectionOrganisées = () => {
   const [SecSecondaire, setSecSecondaire] = useState(false);
 
   return (
-    <div className=" w-[100%]  m-auto bg-[#FFF4DF] relative">
+    <div className=" w-[100%]  m-auto bg-[#FFF4DF]">
       <h1 className="text-3xl font-bold pl-[70px] pt-[70px]">
         Sections organisées
       </h1>
