@@ -41,20 +41,23 @@ const Navbar = () => {
           <div className='flex items-center justify-between pt-6'>
             <div className='w-[62%]'>
               <form>
-                <div className='relative'>
-                  <input
-                    type='search'
-                    id='default-search'
-                    className='block w-full p-2 pl-10 text-sm text-gray-900 border border-[#184C72] rounded-lg bg-white outline-none'
-                    required
-                  />
-                  <button
-                    type='submit'
-                    className='text-white absolute right-0 bottom-0 bg-[#184C72] hover:bg-[#215880] focus:outline-none font-medium rounded-r-lg text-sm px-4 py-[9px]'
-                  >
-                    Search
-                  </button>
-                </div>
+                {
+
+                  // <div className='relative'>
+                  //   <input
+                  //     type='search'
+                  //     id='default-search'
+                  //     className='block w-full p-2 pl-10 text-sm text-gray-900 border border-[#184C72] rounded-lg bg-white outline-none'
+                  //     required
+                  //   />
+                  //   <button
+                  //     type='submit'
+                  //     className='text-white absolute right-0 bottom-0 bg-[#184C72] hover:bg-[#215880] focus:outline-none font-medium rounded-r-lg text-sm px-4 py-[9px]'
+                  //   >
+                  //     Search
+                  //   </button>
+                  // </div>
+                }
               </form>
             </div>
             <div>

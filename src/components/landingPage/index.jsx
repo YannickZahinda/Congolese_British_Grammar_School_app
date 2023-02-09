@@ -53,7 +53,7 @@ const LandingPage = () => {
           <a name='apropos'></a>
           <Apropos/>
         </div>
-        <div>
+        <div className=''>
           <SectionOrganisées/>
         </div>
         <div>

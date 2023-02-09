@@ -8,7 +8,7 @@ const DashboardComponent = () => {
   return (
     <React.Fragment>
       <Routes>
-        <Route path='/home' element={<Home />} />
+        <Route path='/' element={<Home />} />
         <Route path='/teachers' element={<Teachers />} />
         <Route path='/students' element={<Students />} />
       </Routes>

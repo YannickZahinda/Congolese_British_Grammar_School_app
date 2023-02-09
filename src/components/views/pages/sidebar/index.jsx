@@ -15,7 +15,7 @@ const Sidebar = () => {
 
   const menuItem = [
     {
-      path: "/dashboard/home",
+      path: "/dashboard",
       name: "Home",
       img: homeIcon,
     },

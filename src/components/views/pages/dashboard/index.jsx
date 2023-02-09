@@ -12,7 +12,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="bg-[#D0DAC4] flex justify-center ">
-        <aside className=" w-1/4 bg-white rounded-r-2xl">
+        <aside className=" w-1/6 bg-white rounded-r-2xl">
           <h1>CBGS</h1>
           <p>Admin panel</p> <br /> <br />
           <Sidebar />
@@ -43,7 +43,7 @@ const Dashboard = () => {
             <DashboardComponent />
           </div>
         </div>
-        <aside className=" w-1.8/4 p-2 bg-white rounded-l-2xl">
+        <aside className=" w-1/4 p-2 bg-white rounded-l-2xl">
           <div className="flex justify-between">
             <ion-icon name="notifications"></ion-icon>
             <div className="flex text-xs">

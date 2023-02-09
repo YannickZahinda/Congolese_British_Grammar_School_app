@@ -5,26 +5,28 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     padding: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Inter', Helvetica, sans-serif;
+    margin-bottom: 30px;
 }
 
 .skillcard{
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;    
     padding: 15px;
     border-radius: 6px;
     font-size: 15px;
-    color: #515251;
+    /* color: #515251; */
 }
-
-/* .skillsheading {
-    display: flex;
-    gap: 7px;
-} */
 
 .skillsheading > h2 {
     align-self: center;
-    color: black;
+    color: #1b0760;
     margin: 10px;
+}
+
+.skillcard> p {
+    line-height: 27px;
+    color: #5c5577;
+    margin-top: 10px;
 }
 
 .skillsheading > ion-icon {
