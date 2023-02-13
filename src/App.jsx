@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './components/landingPage'
 import Login from './components/login';
 import Dashboard from './components/views/pages/dashboard';
+import AddTeacher from './components/views/pages/teachers/add_teacher';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 const App = () => {
   
@@ -12,6 +15,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/dashboard/*" element={<Dashboard/>}/>
+        <Route path="/new_teacher" element={<AddTeacher />} />
       </Routes>
     </Router>
   )
