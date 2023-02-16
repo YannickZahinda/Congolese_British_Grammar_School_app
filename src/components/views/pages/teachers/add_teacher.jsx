@@ -1,35 +1,97 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import './style.css'
 
 const AddTeacher = () => {
+  const [state, setState] = useState({
+    name: '',
+    email: '',
+    phone_number: '',
+    education_level: [],
+    photo: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Call the server
+    console.log('submitted');
+    console.log(state);
+  }
+
+  const handleChange = (e) => {
+    const {name, value} = e.currentTarget
+    setState((prev) => {
+      return {...prev, [name]: value}
+    })
+  }
+  const {name, email, phone_number, photo} = state;
   return (
     <div className="form__new">
       <h1>ADD NEW TEACHER</h1>
-      <form className="teacher__form">
+      <form className="teacher__form" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">Nom de l'enseignant</label>
-          <input type="text" className="form-control" id="name" placeholder="Entrer le nom"/>
+          <input type="text"
+            value={name}
+            name="name"
+            className="form-control"
+            id="name"
+            placeholder="Entrer le nom"
+            autoFocus
+            onChange={handleChange}
+          />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="john@gmail.com"/>
+          <label htmlFor="email" className="form-label">Email address</label>
+          <input
+          value={email}
+            type="email"
+            name="email"
+            className="form-control"
+            id="email"
+            placeholder="john@gmail.com"
+            onChange={handleChange}
+          />
           {/* {<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>} */}
         </div>
         <div className="mb-3">
           <label htmlFor="phone" className="form-label">Numero de telephone</label>
-          <input type="tel" className="form-control" id="phone" placeholder="+243-000-000-000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"/>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="fb_link" className="form-label">Lien Facebook</label>
-          <input type="url" className="form-control" id="fb_link" />
+          <input
+          value={phone_number}
+            type="tel"
+            name="phone_number"
+            className="form-control"
+            id="phone"
+            placeholder="+243-000-000-000"
+            // pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+            onChange={handleChange}
+          />
         </div>
         <div className="mb-3">
           <label htmlFor="w_phone" className="form-label">Numero WhatsApp</label>
-          <input type="tel" className="form-control" id="w_phone" placeholder="+243-000-000-000" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"/>
+          <input
+            type="tel"
+            className="form-control"
+            id="w_phone"
+            placeholder="+243-000-000-000"
+            // pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+          />
         </div>
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">Nom de l'enseignant</label>
-          <input type="text" className="form-control" id="name" />
+          <label htmlFor="niveau_d'education" className="form-label">Niveau d'education</label>
+          <input
+            type="text"
+            className="form-control"
+            id="niveau_d'education"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="photo" className="form-label">Photo de l'enseignant</label>
+          <input type="file"
+          className="form-control"
+          id="photo"
+        />
         </div>
         <div className="mb-3 form-check">
           <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
