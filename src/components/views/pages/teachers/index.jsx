@@ -43,8 +43,8 @@ const Teachers = () => {
     <>
     <div className="flex justify-between mb-4">
         <h3>All teachers</h3>
-        <button type="button" className="rounded-2xl bg-white p-2 text-sm">
-          <Link to='/new_teacher'>ADD NEW TEACHER</Link>
+        <button type="button" className="btn btn-primary">
+          <Link to='/new_teacher' style={{color: 'white', textDecoration: 'none'}}>ADD NEW TEACHER</Link>
         </button>
     </div>
     <div className="bg-white rounded-xl p-4">

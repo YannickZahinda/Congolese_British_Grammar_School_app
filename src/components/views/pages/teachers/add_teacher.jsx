@@ -112,7 +112,7 @@ const AddTeacher = () => {
           <select name="education_level" id="" className="form-select">
             <option selected>Open to select a level</option>
             <option value="Maternel">Maternel</option>
-            <option value="Primaire">Primary</option>
+            <option value="Primaire">Primaire</option>
             <option value="Secondaire">Secondaire</option>
           </select>
         </div>
