@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Joi from "joi-browser";
+import Joi, { abort } from "joi-browser";
 import './style.css'
 
 const AddTeacher = () => {
@@ -8,28 +8,33 @@ const AddTeacher = () => {
     name: '',
     email: '',
     phone_number: '',
-    education_level: [],
+    // education_level: [],
     photo: '',
   });
 
-  const [errors, setErrors] = useState({});
+  const [allErrors, setallErrors] = useState({});
+
+  const schema = {
+    name: Joi.string().required().label("Name"),
+    email: Joi.string().email().required().label("Email"),
+    phone_number: Joi.number().integer().required().label("Phone number"),
+    photo: Joi.string().required().label("Photo")
+  }
 
   const validate = () => {
-    const new_errors = {};
-    if(state.name.trim() === '')
-      new_errors.name = 'name is required.'
-    if(state.email.trim() === '')
-      new_errors.email = 'email is required.'
-    return Object.keys(new_errors).length === 0 ? null : new_errors;
+    const result = Joi.validate(state, schema, {abortEarly: false});
+    if(!result.error) return;
+    const errors = {};
+    for(let item of result.error.details) errors[item.path[0]] = item.message;
+    return errors
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const allErrors = validate();
-    console.log(allErrors);
-    setErrors(allErrors || {});
-    if(allErrors) return;
+    const errors = validate();
+    setallErrors(errors || {});
+    if(errors) return;
 
     // Call the server
     console.log('submitted');
@@ -58,7 +63,7 @@ const AddTeacher = () => {
             autoFocus
             onChange={handleChange}
           />
-          {errors.name && <div className="alert alert-danger">{errors.name}</div>}
+          {allErrors.name && <div className="alert alert-danger">{allErrors.name}</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
@@ -71,7 +76,7 @@ const AddTeacher = () => {
             placeholder="john@gmail.com"
             onChange={handleChange}
           />
-          {errors.email && <div className="alert alert-danger">{errors.email}</div>}
+          {allErrors.email && <div className="alert alert-danger">{allErrors.email}</div>}
           {/* {<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>} */}
         </div>
         <div className="mb-3">
@@ -86,6 +91,7 @@ const AddTeacher = () => {
             // pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
             onChange={handleChange}
           />
+          {allErrors.phone_number && <div className="alert alert-danger">{allErrors.phone_number}</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="w_phone" className="form-label">Numero WhatsApp</label>
@@ -111,6 +117,7 @@ const AddTeacher = () => {
           className="form-control"
           id="photo"
         />
+          {allErrors.photo && <div className="alert alert-danger">{allErrors.photo}</div>}
         </div>
         <div className="mb-3 form-check">
           <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
