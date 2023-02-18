@@ -8,7 +8,7 @@ const AddTeacher = () => {
     name: '',
     email: '',
     phone_number: '',
-    // education_level: [],
+    education_level: '',
     photo: '',
   });
 
@@ -18,6 +18,7 @@ const AddTeacher = () => {
     name: Joi.string().required().label("Name"),
     email: Joi.string().email().required().label("Email"),
     phone_number: Joi.number().integer().required().label("Phone number"),
+    education_level: Joi.string().required(),
     photo: Joi.string().required().label("Photo")
   }
 
@@ -92,7 +93,6 @@ const AddTeacher = () => {
             onChange={handleChange}
           />
           {allErrors.email && <div className="alert alert-danger">{allErrors.email}</div>}
-          {/* {<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>} */}
         </div>
         <div className="mb-3">
           <label htmlFor="phone" className="form-label">Numero de telephone</label>
@@ -102,29 +102,19 @@ const AddTeacher = () => {
             name="phone_number"
             className="form-control"
             id="phone"
-            placeholder="+243-000-000-000"
-            // pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
+            placeholder="+243 000 000 000"
             onChange={handleChange}
           />
           {allErrors.phone_number && <div className="alert alert-danger">{allErrors.phone_number}</div>}
         </div>
         <div className="mb-3">
-          <label htmlFor="w_phone" className="form-label">Numero WhatsApp</label>
-          <input
-            type="tel"
-            className="form-control"
-            id="w_phone"
-            placeholder="+243-000-000-000"
-            // pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
-          />
-        </div>
-        <div className="mb-3">
           <label htmlFor="niveau_d'education" className="form-label">Niveau d'education</label>
-          <input
-            type="text"
-            className="form-control"
-            id="niveau_d'education"
-          />
+          <select name="education_level" id="" className="form-select">
+            <option selected>Open to select a level</option>
+            <option value="Maternel">Maternel</option>
+            <option value="Primaire">Primary</option>
+            <option value="Secondaire">Secondaire</option>
+          </select>
         </div>
         <div className="mb-3">
           <label htmlFor="photo" className="form-label">Photo de l'enseignant</label>
@@ -133,10 +123,6 @@ const AddTeacher = () => {
           id="photo"
         />
           {allErrors.photo && <div className="alert alert-danger">{allErrors.photo}</div>}
-        </div>
-        <div className="mb-3 form-check">
-          <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-          <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
         <div><Link to="/dashboard/teachers">See all teachers</Link></div>
