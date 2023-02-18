@@ -89,7 +89,7 @@ const Students = () => {
   </thead>
   <tbody>
       {students.map(student => (
-        <tr>
+        <tr key={student.id}>
           <th scope={student.id}>{student.id}</th>
           <td>{student.nom}</td>
           <td>{student.postnom}</td>

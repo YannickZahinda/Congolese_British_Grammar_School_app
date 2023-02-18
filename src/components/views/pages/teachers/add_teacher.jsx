@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Joi, { abort } from "joi-browser";
+import Joi from "joi-browser";
 import './style.css'
 
 const AddTeacher = () => {
@@ -125,7 +125,7 @@ const AddTeacher = () => {
           {allErrors.photo && <div className="alert alert-danger">{allErrors.photo}</div>}
         </div>
         <button type="submit" className="btn btn-primary">Submit</button>
-        <div><Link to="/dashboard/teachers">See all teachers</Link></div>
+        <div><Link to="/dashboard/teachers">Voir toute la liste</Link></div>
       </form>
     </div>
   );
