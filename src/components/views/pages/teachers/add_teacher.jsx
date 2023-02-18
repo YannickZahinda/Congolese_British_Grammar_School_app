@@ -29,6 +29,14 @@ const AddTeacher = () => {
     return errors
   }
 
+  const validateProperty = ({ name, value }) => {
+    const obj = { [name]: value };
+    const new_schema = { [name]: schema[name] };
+    const {error} = Joi.validate(obj, new_schema);
+
+    return error ? error.details[0].message : null;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -42,10 +50,17 @@ const AddTeacher = () => {
   }
 
   const handleChange = (e) => {
+    const errors = {...allErrors};
+    const errorMessage = validateProperty(e.currentTarget);
+    if(errorMessage) errors[e.currentTarget.name] = errorMessage;
+    else delete errors[e.currentTarget.name];
+
     const {name, value} = e.currentTarget
     setState((prev) => {
       return {...prev, [name]: value}
-    })
+    });
+
+    setallErrors(errors)
   }
   const {name, email, phone_number, photo} = state;
   return (
