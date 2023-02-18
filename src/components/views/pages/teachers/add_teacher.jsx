@@ -11,8 +11,24 @@ const AddTeacher = () => {
     photo: '',
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const new_errors = {};
+    if(state.name.trim() === '')
+      new_errors.name = 'name is required.'
+    if(state.email.trim() === '')
+      new_errors.email = 'email is required.'
+    return Object.keys(new_errors).length === 0 ? null : new_errors;
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const allErrors = validate();
+    console.log(allErrors);
+    setErrors(allErrors || {});
+    if(allErrors) return;
 
     // Call the server
     console.log('submitted');
@@ -41,6 +57,7 @@ const AddTeacher = () => {
             autoFocus
             onChange={handleChange}
           />
+          {errors.name && <div className="alert alert-danger">{errors.name}</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email address</label>
@@ -53,6 +70,7 @@ const AddTeacher = () => {
             placeholder="john@gmail.com"
             onChange={handleChange}
           />
+          {errors.email && <div className="alert alert-danger">{errors.email}</div>}
           {/* {<div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>} */}
         </div>
         <div className="mb-3">
