@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom'
+import Pagination from '../../../common/pagination';
 
 const Students = () => {
   const students = [
@@ -66,7 +67,11 @@ const Students = () => {
       parent_number: '0992345321',
       education_level: 'Maternelle'
     },
-  ]
+  ];
+
+  const handlePageChange = page => {
+    console.log(page)
+  }
   return (
     <>
       <div className="flex justify-between mb-4">
@@ -76,31 +81,32 @@ const Students = () => {
         </button>
       </div>
       <table className="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nom</th>
-      <th scope="col">Post nom</th>
-      <th scope="col">Classe</th>
-      <th scope="col">Date de Naissance</th>
-      <th scope="col">Numero de Parent</th>
-      <th scope="col">Niveau</th>
-    </tr>
-  </thead>
-  <tbody>
-      {students.map(student => (
-        <tr key={student.id}>
-          <th scope={student.id}>{student.id}</th>
-          <td>{student.nom}</td>
-          <td>{student.postnom}</td>
-          <td>{student.classe}</td>
-          <td>{student.date_naissance}</td>
-          <td>{student.parent_number}</td>
-          <td>{student.education_level}</td>
-        </tr>
-      ))}
-  </tbody>
-</table>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Post nom</th>
+            <th scope="col">Classe</th>
+            <th scope="col">Date de Naissance</th>
+            <th scope="col">Numero de Parent</th>
+            <th scope="col">Niveau</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map(student => (
+            <tr key={student.id}>
+              <th scope={student.id}>{student.id}</th>
+              <td>{student.nom}</td>
+              <td>{student.postnom}</td>
+              <td>{student.classe}</td>
+              <td>{student.date_naissance}</td>
+              <td>{student.parent_number}</td>
+              <td>{student.education_level}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      < Pagination itemCount={students.length} pageSize={4} onPageChange={handlePageChange}/>
     </>
   )
 }
