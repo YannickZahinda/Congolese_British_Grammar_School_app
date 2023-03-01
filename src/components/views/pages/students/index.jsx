@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import Pagination from '../../../common/pagination';
+import paginate from '../../../common/paginate';
 
 const Students = () => {
   const [state, setState] = useState({
@@ -78,9 +79,13 @@ const Students = () => {
     setState((prev) => {
       return {...prev, currentPage: page}
     });
-  }
+  };
 
+  if(students.length === 0) return <p>There are no students in the database</p>
+  
   const { pageSize, currentPage } = state;
+
+  const students_page = paginate(students, currentPage, pageSize);
   return (
     <>
       <div className="flex justify-between mb-4">
@@ -102,7 +107,7 @@ const Students = () => {
           </tr>
         </thead>
         <tbody>
-          {students.map(student => (
+          {students_page.map(student => (
             <tr key={student.id}>
               <th scope={student.id}>{student.id}</th>
               <td>{student.nom}</td>
