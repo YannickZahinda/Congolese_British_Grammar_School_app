@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
 import Pagination from '../../../common/pagination';
 
 const Students = () => {
+  const [state, setState] = useState({
+    pageSize: 4,
+    currentPage: 1
+  });
+
   const students = [
     {
       id: 1,
@@ -70,8 +75,12 @@ const Students = () => {
   ];
 
   const handlePageChange = page => {
-    console.log(page)
+    setState((prev) => {
+      return {...prev, currentPage: page}
+    });
   }
+
+  const { pageSize, currentPage } = state;
   return (
     <>
       <div className="flex justify-between mb-4">
@@ -106,7 +115,11 @@ const Students = () => {
           ))}
         </tbody>
       </table>
-      < Pagination itemsCount={students.length} pageSize={4} onPageChange={handlePageChange}/>
+      <Pagination
+        itemsCount={students.length}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}/>
     </>
   )
 }
