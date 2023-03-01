@@ -1,44 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { accountPic } from "../../../../assets";
+import Pagination from "../../../common/pagination";
+import paginate from "../../../common/paginate";
+import { data } from "./data";
 import './style.css'
 
 const Teachers = () => {
-  const teachers = [
-    {
-      education__level: "Primary",
-      name: "Anny Whisley",
-      photo: accountPic,
-      phone__number: "+243992028232",
-      address_email: "annew@gmail.com",
-      social__item: ['facebook__link', 'twitter__link'],
-      course__item: ['Education civique', 'Informatique', 'chant'],
-      class__item: ['4ieme', '5ieme', '3ieme'],
-      preferences: 'J\'adore le Sport et faire du Sky',
-    },
-    {
-      education__level: "Secondary",
-      name: "Jackson White",
-      photo: accountPic,
-      phone__number: "+243992028232",
-      address_email: "annew@gmail.com",
-      social__item: ['facebook__link', 'twitter__link'],
-      course__item: ['Education civique', 'Informatique', 'chant'],
-      class__item: ['4ieme', '5ieme', '3ieme'],
-      preferences: 'J\'adore le Sport et faire du Sky',
-    },
-    {
-      education__level: "Nursery",
-      name: "Jeanne Doe",
-      photo: accountPic,
-      phone__number: "+243992028232",
-      address_email: "annew@gmail.com",
-      social__item: ['facebook__link', 'twitter__link'],
-      course__item: ['Education civique', 'Informatique', 'chant'],
-      class__item: ['4ieme', '5ieme', '3ieme'],
-      preferences: 'J\'adore le Sport et faire du Sky',
-    }
-  ]
+  const [state, setState] = useState({
+    pageSize: 4,
+    currentPage: 1
+  });
+
+  const [teachers, setTeachers] = useState([]);
+
+  useEffect(() => {
+    setTeachers(data);
+  }, []);
+
+  const handlePageChange = page => {
+    setState((prev) => {
+      return {...prev, currentPage: page}
+    });
+  };
+
+  if(teachers.length === 0) return <p>There are no teachers in the database</p>
+
+  const { pageSize, currentPage } = state;
+
+  const teachers_page = paginate(teachers, currentPage, pageSize);
   return (
     <>
     <div className="flex justify-between mb-4">
@@ -50,9 +39,9 @@ const Teachers = () => {
     <div className="bg-white rounded-xl p-4">
       <h3> Teachers</h3> <br />
       <div className="teacher__container">
-        {teachers.map((teacher) => {
+        {teachers_page.map((teacher) => {
         return(
-          <div className="bg-[#F0F7FF] p-3 rounded-md teacher__content">
+          <div key={teacher.id} className="bg-[#F0F7FF] p-3 rounded-md teacher__content">
         <div className="upper__section">
           <div className="education__level">
             <p>{teacher.education__level}</p>
@@ -103,6 +92,12 @@ const Teachers = () => {
       })}
       </div>
     </div>
+    <Pagination
+      itemsCount={teachers.length}
+      pageSize={pageSize}
+      currentPage={currentPage}
+      onPageChange={handlePageChange}
+    />
     </>
   );
 };

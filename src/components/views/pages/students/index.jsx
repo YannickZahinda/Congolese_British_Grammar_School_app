@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import Pagination from '../../../common/pagination';
 import paginate from '../../../common/paginate';
+import { data } from './data';
 
 const Students = () => {
   const [state, setState] = useState({
@@ -9,71 +10,11 @@ const Students = () => {
     currentPage: 1
   });
 
-  const students = [
-    {
-      id: 1,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Primaire'
-    },
-    {
-      id: 2,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Primaire'
-    },
-    {
-      id: 3,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Secondaire'
-    },
-    {
-      id: 4,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Secondaire'
-    },
-    {
-      id: 5,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Secondaire'
-    },
-    {
-      id: 6,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Maternelle'
-    },
-    {
-      id: 7,
-      nom: 'John',
-      postnom: 'Doe',
-      classe: 'VI',
-      date_naissance: '18-02-2015',
-      parent_number: '0992345321',
-      education_level: 'Maternelle'
-    },
-  ];
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    setStudents(data);
+  }, [])
 
   const handlePageChange = page => {
     setState((prev) => {
