@@ -106,7 +106,7 @@ const Students = () => {
           ))}
         </tbody>
       </table>
-      < Pagination itemCount={students.length} pageSize={4} onPageChange={handlePageChange}/>
+      < Pagination itemsCount={students.length} pageSize={4} onPageChange={handlePageChange}/>
     </>
   )
 }
