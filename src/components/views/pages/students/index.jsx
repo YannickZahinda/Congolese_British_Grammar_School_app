@@ -22,11 +22,23 @@ const Students = () => {
     });
   };
 
-  if(students.length === 0) return <p>There are no students in the database</p>
+  if(students.length === 0)
+    return(
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    )
   
   const { pageSize, currentPage } = state;
 
   const students_page = paginate(students, currentPage, pageSize);
+
+  const handleDelete = student => {
+    console.log(student)
+  }
+
   return (
     <>
       <div className="flex justify-between mb-4">
@@ -45,6 +57,7 @@ const Students = () => {
             <th scope="col">Date de Naissance</th>
             <th scope="col">Numero de Parent</th>
             <th scope="col">Niveau</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +70,7 @@ const Students = () => {
               <td>{student.date_naissance}</td>
               <td>{student.parent_number}</td>
               <td>{student.education_level}</td>
+              <td><button onClick={() => handleDelete(student)} className='btn btn-danger btn-sm'>Delete</button></td>
             </tr>
           ))}
         </tbody>

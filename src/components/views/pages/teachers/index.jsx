@@ -23,7 +23,14 @@ const Teachers = () => {
     });
   };
 
-  if(teachers.length === 0) return <p>There are no teachers in the database</p>
+  if(teachers.length === 0)
+    return(
+       <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    )
 
   const { pageSize, currentPage } = state;
 
