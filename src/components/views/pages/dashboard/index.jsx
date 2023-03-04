@@ -36,7 +36,6 @@ const Dashboard = () => {
             </div>
           </div>{" "}
           <br />
-          <h3>All teachers</h3>
           <div className="bg-white rounded-xl p-4">
             <DashboardComponent />
           </div>
