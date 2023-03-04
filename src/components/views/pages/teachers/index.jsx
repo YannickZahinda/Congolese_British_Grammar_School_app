@@ -35,6 +35,10 @@ const Teachers = () => {
   const { pageSize, currentPage } = state;
 
   const teachers_page = paginate(teachers, currentPage, pageSize);
+
+  const handleDelete = teacher => {
+    console.log(teacher)
+  }
   return (
     <>
     <div className="flex justify-between mb-4">
@@ -94,6 +98,7 @@ const Teachers = () => {
             <p>{teacher.preferences}</p>
           </div>
         </div>
+        <button onClick={() => handleDelete(teacher)} className="btn btn-danger btn-sm">Delete</button>
       </div>
         )
       })}
