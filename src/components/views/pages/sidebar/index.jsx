@@ -10,8 +10,13 @@ import {
   } from "../../../../assets";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => setIsOpen(!isOpen)
+  const [state, setState] = useState({
+    currentItem: 'Home',
+  });
+
+  const handleSelect = item => {
+    setState({ currentItem: item })
+  }
 
   const menuItem = [
     {
@@ -36,14 +41,19 @@ const Sidebar = () => {
       }
   ]
   
+  const { currentItem } = state;
+
+  const styles = (item, currentItem) => {
+    return item.name === currentItem ? "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer active" : "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer"
+  }
 
   return (
-    <ul className="list-none leading-9">
-        { menuItem.map((item, index)=> (
-          <Link to={item.path}>
-            <li key={index}
-             onClick={() => {item.path}} 
-             className="flex gap-2 hover:bg-[#D0DAC4] hover:border-solid hover:border-[#182C72] hover:border-l-2 p-4 cursor-pointer active:bg-[#D0DAC4] text-xl">
+    <ul className="list-group">
+        { menuItem.map((item)=> (
+          <Link to={item.path} className="text-decoration-none">
+            <li key={item.name}
+             onClick={() => handleSelect(item.name)} 
+             className={styles(item, currentItem)}>
               <span className="self-center">
                 <img src={item.img} alt="home icon" />
               </span>

@@ -1,7 +1,5 @@
 import React from "react";
-// import {languageIcon} from "../../../assets"
 import { accountPic } from "../../../../assets";
-import Teachers from "../teachers"
 import MyCalendar from "../asidecalendar/calendar";
 import Sidebar from "../sidebar";
 import DashboardComponent from "./dash_comp";
