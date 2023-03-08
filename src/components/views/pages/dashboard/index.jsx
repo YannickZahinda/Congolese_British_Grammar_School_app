@@ -16,7 +16,7 @@ const Dashboard = () => {
           <Sidebar />
         </aside>
         <div className=" w-3/4 p-4">
-          <div className="flex justify-between">
+          {/* <div className="flex justify-between">
             <div className="flex">
               <div className="bg-white rounded-l-2xl px-2 align-baseline">
                 <ion-icon name="search"></ion-icon>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                 <option value="francais">francais</option>
               </select>
             </div>
-          </div>{" "}
+          </div>{" "} */}
           <br />
           <div className="bg-white rounded-xl p-4">
             <DashboardComponent />

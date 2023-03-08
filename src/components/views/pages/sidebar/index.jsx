@@ -44,14 +44,16 @@ const Sidebar = () => {
   const { currentItem } = state;
 
   const styles = (item, currentItem) => {
-    return item.name === currentItem ? "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer active" : "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer"
+    return item.name === currentItem ?
+    "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer active"
+    : "list-group-item d-flex gap-2 hover:bg-[#D0DAC4] cursor-pointer"
   }
 
   return (
     <ul className="list-group">
         { menuItem.map((item)=> (
-          <Link to={item.path} className="text-decoration-none">
-            <li key={item.name}
+          <Link key={item.name} to={item.path} className="text-decoration-none">
+            <li
              onClick={() => handleSelect(item.name)} 
              className={styles(item, currentItem)}>
               <span className="self-center">
