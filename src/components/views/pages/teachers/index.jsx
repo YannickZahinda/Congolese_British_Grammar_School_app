@@ -78,7 +78,7 @@ const Teachers = () => {
             <p className="email">{teacher.address_email}</p>
             <ul className="socials">
               {teacher.social__item.map((item) => 
-                <li className="social__item">{item}</li>
+                <li key={item} className="social__item">{item}</li>
               )}
             </ul>
           </div>
@@ -86,7 +86,7 @@ const Teachers = () => {
             <p className="courses">Cours Dispenses</p>
             <ul className="cours__list">
               {teacher.course__item.map((course) =>
-              <li className="course__item">{course}</li>
+              <li key={course} className="course__item">{course}</li>
               )}
             </ul>
           </div>
@@ -96,7 +96,7 @@ const Teachers = () => {
             <p className="class">Classes encadrees</p>
             <ul className="class__list">
               {teacher.class__item.map((level) =>
-              <li className="class__item">{level}</li>
+              <li key={level} className="class__item">{level}</li>
               )}
             </ul>
           </div>
