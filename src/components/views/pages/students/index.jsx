@@ -40,12 +40,12 @@ const Students = () => {
     setState(prev => {
       return {...prev, currentPage: 1, selectedItem: item};
     });
-    console.log(state);
   }
 
   const { pageSize, currentPage, selectedItem } = state;
 
-  const filtered = selectedItem && selectedItem !== 'All groups' ? students.filter(student => student.education_level === selectedItem) : students;
+  const filtered = selectedItem && selectedItem !== 'All groups' ? 
+    students.filter(student => student.education_level === selectedItem) : students;
 
   const students_page = paginate(filtered, currentPage, pageSize);
 
