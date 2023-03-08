@@ -4,12 +4,14 @@ import Pagination from '../../../common/pagination';
 import paginate from '../../../common/paginate';
 import { data } from './data';
 import ListGroup from '../../../common/listGroup';
+import SearchBox from '../../../common/searchBox';
 
 const Students = () => {
   const [state, setState] = useState({
     pageSize: 4,
     currentPage: 1,
-    selectedItem: ""
+    selectedItem: "",
+    searchQuery: ""
   });
 
   const [students, setStudents] = useState([]);
@@ -38,14 +40,28 @@ const Students = () => {
 
   const handleItemSelect = (item) => {
     setState(prev => {
-      return {...prev, currentPage: 1, selectedItem: item};
+      return {...prev, currentPage: 1, selectedItem: item, searchQuery: ""};
     });
+  };
+
+  const handleSearch = query => {
+    setState(prev => {
+      return {...prev, currentPage: 1, selectedItem: null,searchQuery: query}
+    })
+    console.log(query);
   }
 
-  const { pageSize, currentPage, selectedItem } = state;
+  const { pageSize, currentPage, selectedItem, searchQuery } = state;
 
-  const filtered = selectedItem && selectedItem !== 'All groups' ? 
-    students.filter(student => student.education_level === selectedItem) : students;
+  let filtered = students;
+  if(searchQuery)
+    filtered = students.filter(s =>
+      s.nom.toLowerCase().startsWith(searchQuery.toLowerCase()));
+  else if(selectedItem && selectedItem !== 'All groups')
+  filtered = students.filter(student => student.education_level === selectedItem);
+
+  // const filtered = selectedItem && selectedItem !== 'All groups' ? 
+  //   students.filter(student => student.education_level === selectedItem) : students;
 
   const students_page = paginate(filtered, currentPage, pageSize);
 
@@ -66,10 +82,17 @@ const Students = () => {
           <Link to='/new_student' style={{color: 'white', textDecoration: 'none'}}>ADD NEW STUDENT</Link>
         </button>
       </div>
-      <ListGroup items={['All groups','Maternelle', 'Primaire', 'Secondaire']}
-        onItemSelect={handleItemSelect}
-        selectedItem={selectedItem}
-      />
+      <div className="row">
+        <div className="col-3">
+          <ListGroup items={['All groups','Maternelle', 'Primaire', 'Secondaire']}
+            onItemSelect={handleItemSelect}
+            selectedItem={selectedItem}
+          />
+        </div>
+        <div className="col">
+          <SearchBox value={searchQuery} onChange={handleSearch}/>
+        </div>
+      </div>
       <table className="table table-striped">
         <thead>
           <tr>
