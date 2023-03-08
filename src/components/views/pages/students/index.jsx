@@ -8,12 +8,11 @@ import ListGroup from '../../../common/listGroup';
 const Students = () => {
   const [state, setState] = useState({
     pageSize: 4,
-    currentPage: 1
+    currentPage: 1,
+    selectedItem: ""
   });
 
   const [students, setStudents] = useState([]);
-
-  const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     setStudents(data);
@@ -38,11 +37,13 @@ const Students = () => {
   };
 
   const handleItemSelect = (item) => {
-    console.log(item);
-    setSelectedItem(item);
+    setState(prev => {
+      return {...prev, currentPage: 1, selectedItem: item};
+    });
+    console.log(state);
   }
 
-  const { pageSize, currentPage } = state;
+  const { pageSize, currentPage, selectedItem } = state;
 
   const filtered = selectedItem && selectedItem !== 'All groups' ? students.filter(student => student.education_level === selectedItem) : students;
 
