@@ -75,7 +75,7 @@ export const data = [
     {
       id: 9,
       nom: 'Damien',
-      postnom: 'Doe',
+      postnom: 'Ceballos',
       classe: 'VI',
       date_naissance: '18-02-2015',
       parent_number: '0992345321',
@@ -84,7 +84,7 @@ export const data = [
     {
       id: 10,
       nom: 'Peter',
-      postnom: 'Doe',
+      postnom: 'Nunez',
       classe: 'VI',
       date_naissance: '18-02-2015',
       parent_number: '0992345321',
@@ -93,7 +93,7 @@ export const data = [
     {
       id: 11,
       nom: 'Van Gaal',
-      postnom: 'Doe',
+      postnom: 'Martinez',
       classe: 'VI',
       date_naissance: '18-02-2015',
       parent_number: '0992345321',
@@ -102,7 +102,7 @@ export const data = [
     {
       id: 12,
       nom: 'Christian',
-      postnom: 'Doe',
+      postnom: 'Ronaldo',
       classe: 'VI',
       date_naissance: '18-02-2015',
       parent_number: '0992345321',

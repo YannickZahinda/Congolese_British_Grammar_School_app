@@ -56,12 +56,9 @@ const Students = () => {
   let filtered = students;
   if(searchQuery)
     filtered = students.filter(s =>
-      s.nom.toLowerCase().startsWith(searchQuery.toLowerCase()));
+      s.nom.toLowerCase().startsWith(searchQuery.toLowerCase()) || s.postnom.toLowerCase().startsWith(searchQuery.toLowerCase()));
   else if(selectedItem && selectedItem !== 'All groups')
   filtered = students.filter(student => student.education_level === selectedItem);
-
-  // const filtered = selectedItem && selectedItem !== 'All groups' ? 
-  //   students.filter(student => student.education_level === selectedItem) : students;
 
   const students_page = paginate(filtered, currentPage, pageSize);
 
@@ -89,7 +86,7 @@ const Students = () => {
             selectedItem={selectedItem}
           />
         </div>
-        <div className="col">
+        <div className="col d-flex align-items-end">
           <SearchBox value={searchQuery} onChange={handleSearch}/>
         </div>
       </div>
