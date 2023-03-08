@@ -36,7 +36,15 @@ const Students = () => {
   const students_page = paginate(students, currentPage, pageSize);
 
   const handleDelete = student => {
-    console.log(student)
+    let response = confirm("Est-vous sur vous voulez effacez cet eleve?");
+    if(response) {
+      console.log(student);
+      // Call the server
+      setStudents((prev) => {
+        const newlist = [...prev];
+        return newlist.filter(item => item !== student);
+      });
+    }
   }
 
   return (

@@ -37,7 +37,14 @@ const Teachers = () => {
   const teachers_page = paginate(teachers, currentPage, pageSize);
 
   const handleDelete = teacher => {
-    console.log(teacher)
+    const result = confirm("Are you sur you want to delete this person?");
+    if(result) {
+      console.log(teacher)
+      setTeachers((prev) => {
+        const newList = [...prev];
+        return newList.filter(person => person !== teacher)
+      });
+    }
   }
   return (
     <>
