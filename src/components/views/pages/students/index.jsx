@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Pagination from '../../../common/pagination';
 import paginate from '../../../common/paginate';
 import { data } from './data';
+import ListGroup from '../../../common/listGroup';
 
 const Students = () => {
   const [state, setState] = useState({
@@ -11,6 +12,8 @@ const Students = () => {
   });
 
   const [students, setStudents] = useState([]);
+
+  const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     setStudents(data);
@@ -21,20 +24,7 @@ const Students = () => {
       return {...prev, currentPage: page}
     });
   };
-
-  if(students.length === 0)
-    return(
-      <div class="d-flex justify-content-center">
-        <div class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    )
-  
-  const { pageSize, currentPage } = state;
-
-  const students_page = paginate(students, currentPage, pageSize);
-
+ 
   const handleDelete = student => {
     let response = confirm("Est-vous sur vous voulez effacez cet eleve?");
     if(response) {
@@ -45,7 +35,27 @@ const Students = () => {
         return newlist.filter(item => item !== student);
       });
     }
+  };
+
+  const handleItemSelect = (item) => {
+    console.log(item);
+    setSelectedItem(item);
   }
+
+  const { pageSize, currentPage } = state;
+
+  const filtered = selectedItem && selectedItem !== 'All groups' ? students.filter(student => student.education_level === selectedItem) : students;
+
+  const students_page = paginate(filtered, currentPage, pageSize);
+
+  if(students.length === 0)
+    return(
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    )
 
   return (
     <>
@@ -55,6 +65,10 @@ const Students = () => {
           <Link to='/new_student' style={{color: 'white', textDecoration: 'none'}}>ADD NEW STUDENT</Link>
         </button>
       </div>
+      <ListGroup items={['All groups','Maternelle', 'Primaire', 'Secondaire']}
+        onItemSelect={handleItemSelect}
+        selectedItem={selectedItem}
+      />
       <table className="table table-striped">
         <thead>
           <tr>
@@ -84,7 +98,7 @@ const Students = () => {
         </tbody>
       </table>
       <Pagination
-        itemsCount={students.length}
+        itemsCount={filtered.length}
         pageSize={pageSize}
         currentPage={currentPage}
         onPageChange={handlePageChange}/>
