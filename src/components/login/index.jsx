@@ -1,42 +1,59 @@
-import React, {useState, useEffect} from "react";
+import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useEffect, useRef, useState } from "react";
 import LoginImage from "../../assets/login.png";
+import "./index.css";
+
+const USER_REGEX = /^[a-zA-Z][A-zA-Z0-9-_]{3,23}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+
 
 const Login = () => {
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const userRef = useRef();
+  const errRef = useRef();
 
-  const procceedLogin = (e) => {
-    e.preventDefault();
-    if(validate()){
-      // implement code
-      console.log('Proceed');
-      fetch('https://60d1-2c0f-eb68-643-b001-1444-ef95-306f-34a3.eu.ngrok.io/users/sign_in' + email).then((res) => {
-        return res.json()
-      }).then((response)=> {
-        console.log(response);
-        alert(response)
-      }).catch((err)=> {
-        alert("Login failed due to: "+err.message)
-      })
-    }
-  }
+  const [user, setUser] = useState('');
+  const [validName, setValidName] = useState(false);
+  const [userFocus, setUserFocus] = useState(false);
 
-  const validate=()=> {
-    let result = true;
-    if (email === '' || email === null) {
-      result = false;
-      console.warn('please enter email');
-    }
-    if (password === '' || password === null) {
-      result = false;
-      console.warn('please enter password');
-    }
-    return result;
-  }
+  const [pwd, setPwd] = useState('');
+  const [validPwd, setValidPwd] = useState(false);
+  const [pwdFocus, setPwdFocus] = useState(false);
+
+  const [matchPwd, setMatchPwd] = useState('');
+  const [validMatch, setValidMatch] = useState(false);
+  const [matchFocus, setMatchFocus] = useState(false);
+
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+    userRef.current.focus()
+  }, [])
+
+  useEffect(() => {
+    const result = USER_REGEX.test(user);
+    console.log(result);
+    console.log(user);
+    setValidName(result);
+  }, [user])
+
+  useEffect(() => {
+    const result = PWD_REGEX.test(pwd);
+    console.log(result);
+    console.log(pwd);
+    const match = pwd === matchPwd;
+    setValidPwd(match);
+  }, [pwd, matchPwd]);
+
+  useEffect(() => {
+    setErrMsg('');
+  }, [user, pwd, matchPwd])
 
   return (
     <div className='relative flex w-full h-full text-black '>
+      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen" } aria-live="assertive" >{errMsg}</p>
       <div className='w-1/2 h-screen '>
         <div className='flex flex-col justify-center w-2/3 h-full mx-auto text-white xl:w-1/2'>
           <div>
@@ -44,21 +61,33 @@ const Login = () => {
           </div>
 
           <div className='mt-10'>
-            <form onSubmit={procceedLogin}>
+            <form >
               <div>
                 <label
                   className='mb-2.5 block font-normal text-black'
                   for='email'
                 >
                   Username or email
+                  <span className={validName ? "valid" : "hide"}>
+                    <FontAwesomeIcon icon = {faCheck} />
+                  </span>
+                  <span className={validName || !user ? "hide" : "invalid"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
                 </label>
                 <input
                   type='email'
                   id='email'
-                  value={email}
+                  ref={userRef}
+                  autoComplete="off"
+                  onChange={(e => setUser(e.target.value))}
+                  aria-invalid={validName ? "false" : "true"}
+                  // aria-describedby={uidnote}
+                  onFocus={() => setUserFocus(true)}
+                  onBlur={() => setUserFocus(false)}
+                  required
                   className='inline-block w-full p-4 leading-none placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 text-black rounded-lg text-3lack '
                   placeholder='Enter username or email'
-                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className='mt-4'>
@@ -71,10 +100,8 @@ const Login = () => {
                 <input
                   type='password'
                   id='password'
-                  value={password}
                   className='inline-block w-full p-4 leading-none text-black placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 rounded-lg'
                   placeholder='Enter password'
-                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div className='flex flex-col justify-end w-full mt-4 sm:flex-row'>
@@ -109,6 +136,12 @@ const Login = () => {
                   </span>{" "}
                 </p>
               </div>
+              <p id="uidnote" className={ userFocus && user &&!validName ? "instruction" : "offscreen"}>
+                {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+                4 to 24 characters. <br/>
+                Must begin with a Letter. <br />
+                Letters, numbers, underscore, hyphens allowed
+              </p>
             </form>
           </div>
         </div>
