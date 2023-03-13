@@ -1,4 +1,4 @@
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faInfoCircle, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import LoginImage from "../../assets/login.png";
@@ -65,7 +65,7 @@ const Login = () => {
               <div>
                 <label
                   className='mb-2.5 block font-normal text-black'
-                  for='email'
+                  htmlFor='email'
                 >
                   Username or email
                   <span className={validName ? "valid" : "hide"}>
@@ -93,16 +93,38 @@ const Login = () => {
               <div className='mt-4'>
                 <label
                   className='mb-2.5 block font-normal text-black'
-                  for='email'
+                  htmlFor='password'
                 >
-                  Password
+                  Password:
+                  <span className={validPwd ? "valid" : "hide"}>
+                    <FontAwesomeIcon icon = {faCheck} />
+                  </span>
+                  <span className={validPwd ||!pwd? "hide" : "invalid"}>
+                    <FontAwesomeIcon icon={faTimes} />
+                  </span>
                 </label>
                 <input
                   type='password'
                   id='password'
+                  onChange={(e) => setPwd(e.target.value)}
+                  required
+                  aria-invalid={validPwd ? "false" : "true"}
+                  aria-describedby="pwdnote"
+                  onFocus={() => setPwdFocus(true)}
+                  onBlur={() => setPwdFocus(false)}
                   className='inline-block w-full p-4 leading-none text-black placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 rounded-lg'
                   placeholder='Enter password'
                 />
+          
+                <p id="pwdnote" className={pwdFocus && validPwd ? "instructions" : "offscreen"}>
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  8 to 24 characters. <br/>
+                  Must include uppercase and lowercases character. A number and a special 
+                  character. <br/>
+                  Allowed special character: <span aria-label="exclamation mark">!</span>
+                  <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span>
+                  <span aria-label="dollar sign">$</span> <span aria-label="percent sign">%</span>
+                </p>
               </div>
               <div className='flex flex-col justify-end w-full mt-4 sm:flex-row'>
                 <div>
@@ -136,12 +158,12 @@ const Login = () => {
                   </span>{" "}
                 </p>
               </div>
-              <p id="uidnote" className={ userFocus && user &&!validName ? "instruction" : "offscreen"}>
-                {/* <FontAwesomeIcon icon={faInfoCircle} /> */}
+              {/* <p id="uidnote" className={ userFocus && user &&!validName ? "instruction" : "offscreen"}>
+                <FontAwesomeIcon icon={faInfoCircle} /> *
                 4 to 24 characters. <br/>
                 Must begin with a Letter. <br />
                 Letters, numbers, underscore, hyphens allowed
-              </p>
+              </p> */}
             </form>
           </div>
         </div>
