@@ -23,11 +23,29 @@ const Teachers = () => {
     });
   };
 
-  if(teachers.length === 0) return <p>There are no teachers in the database</p>
+  if(teachers.length === 0)
+    return(
+       <div className="d-flex justify-content-center">
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    )
 
   const { pageSize, currentPage } = state;
 
   const teachers_page = paginate(teachers, currentPage, pageSize);
+
+  const handleDelete = teacher => {
+    const result = confirm("Are you sur you want to delete this person?");
+    if(result) {
+      console.log(teacher)
+      setTeachers((prev) => {
+        const newList = [...prev];
+        return newList.filter(person => person !== teacher)
+      });
+    }
+  }
   return (
     <>
     <div className="flex justify-between mb-4">
@@ -60,7 +78,7 @@ const Teachers = () => {
             <p className="email">{teacher.address_email}</p>
             <ul className="socials">
               {teacher.social__item.map((item) => 
-                <li className="social__item">{item}</li>
+                <li key={item} className="social__item">{item}</li>
               )}
             </ul>
           </div>
@@ -68,7 +86,7 @@ const Teachers = () => {
             <p className="courses">Cours Dispenses</p>
             <ul className="cours__list">
               {teacher.course__item.map((course) =>
-              <li className="course__item">{course}</li>
+              <li key={course} className="course__item">{course}</li>
               )}
             </ul>
           </div>
@@ -78,7 +96,7 @@ const Teachers = () => {
             <p className="class">Classes encadrees</p>
             <ul className="class__list">
               {teacher.class__item.map((level) =>
-              <li className="class__item">{level}</li>
+              <li key={level} className="class__item">{level}</li>
               )}
             </ul>
           </div>
@@ -87,6 +105,7 @@ const Teachers = () => {
             <p>{teacher.preferences}</p>
           </div>
         </div>
+        <button onClick={() => handleDelete(teacher)} className="btn btn-danger btn-sm">Delete</button>
       </div>
         )
       })}

@@ -20,6 +20,7 @@
     "@heroicons/react": "^2.0.13",
     "@mui/material": "^5.10.15",
     "bootstrap": "^5.2.3",
+    "font-awesome": "^4.7.0",
     "framer-motion": "^7.6.9",
     "joi-browser": "13.4",
     "lodash": "^4.17.10",
