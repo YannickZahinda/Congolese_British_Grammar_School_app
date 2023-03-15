@@ -4,18 +4,20 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import LoginImage from "../../assets/login.png";
 import "./index.css";
-import axios from "../../api/axios";
-
+import axios from '../../api/axios';
+import AuthContext from "../../context/AuthProvider";
 
 // const USER_REGEX = /^[a-zA-Z][A-zA-Z0-9-_]{3,23}$/;
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const EMAIL_REGEX =
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "/users"
+const LOGIN_URL = "/users";
 
 const Login = () => {
+  const {setAuth} = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
 
@@ -47,7 +49,7 @@ const Login = () => {
 
   useEffect(() => {
     setValidPwd(PWD_REGEX.test(pwd));
-    setValidMatch(pwd === matchPwd)
+    setValidMatch(pwd === matchPwd);
   }, [pwd, matchPwd]);
 
   useEffect(() => {
@@ -56,191 +58,208 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validEmail ||!validPwd) {
-      setErrMsg("All fields are required");
-      return;
-    }
-    // console.log(user, pwd);
-    // setSuccess(true);
+
     try {
-      const res = await axios.post(REGISTER_URL, 
-      JSON.stringify({user, pwd}),
+      const response = await axios.post(LOGIN_URL,
+        JSON.stringify({email: user, password: pwd}), 
         {
-          headers: {"Content-Type": "application/json"},
-            withCredentials: true
+          headers: {'content-Type' : 'application/json'}
+          // withCredentials: true
         }
       );
-      console.log(res.data);
-      console.log(res.accessToken);
-      console.log(JSON.stringify(res));
-      setSuccess(true)
-      //clear fields
-
-    } catch (err) {
-      if(!err?.respnse){
-        setErrMsg("No server Response")
-      }else if (err.response?.status === 409){
-        setErrMsg("username taken");
-      }else {
-        setErrMsg("Registration failed");
+        console.log(JSON.stringify(response?.data));
+        const accessToken = response?.data?.accessToken;
+        const roles = response?.data?.roles;
+        setAuth({user, pwd, roles, accessToken})
+        setUser('');
+        setPwd('');
+        setSuccess(true);
+    } catch (err)  {
+        if (!err?.response){
+          setErrMsg('No Server Response')
+        }else if (err.response?.status === 400){
+          setErrMsg('Missing username or Password')
+        }else if (err.response?.status === 401){
+          setErrMsg('Unauthorized')
+        }else {
+          setErrMsg('Login Failed');
+        }
+        errRef.current.focus();
       }
-      errRef.current.focus();
-    }
-  }
+  };
 
   return (
-    <div className="relative flex w-full h-full text-black ">
-      <p
-        ref={errRef}
-        className={errMsg ? "errmsg" : "offscreen"}
-        aria-live="assertive"
-      >
-        {errMsg}
-      </p>
-      <div className="w-1/2 h-screen ">
-        <div className="flex flex-col justify-center w-2/3 h-full mx-auto text-white xl:w-1/2">
-          <div>
-            <p className="mb-3 text-3xl font-bold text-black">Welcome back</p>
+    <>
+      {success ? (
+        <section>
+          <div className="success">
+            <FontAwesomeIcon icon={faCheck} />
+            <h2>Success!</h2>
+            <p>You have successfully logged in.</p>
+            <p>
+              <a href="#">Back home</a>
+            </p>
           </div>
-
-          <div className="mt-10">
-            <form onSubmit={handleSubmit}>
+        </section>
+      ) : (
+        <div className="relative flex w-full h-full text-black ">
+          <p
+            ref={errRef}
+            className={errMsg ? "errmsg" : "offscreen"}
+            aria-live="assertive"
+          >
+            {errMsg}
+          </p>
+          <div className="w-1/2 h-screen ">
+            <div className="flex flex-col justify-center w-2/3 h-full mx-auto text-white xl:w-1/2">
               <div>
-                <label
-                  className="mb-2.5 block font-normal text-black"
-                  htmlFor="email"
-                >
-                  Username or email
-                  <span className={validEmail ? "valid" : "hide"}>
-                    <FontAwesomeIcon icon={faCheck} />
-                  </span>
-                  <span className={validEmail || !user ? "hide" : "invalid"}>
-                    <FontAwesomeIcon icon={faTimes} />
-                  </span>
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  ref={userRef}
-                  value={user}
-                  autoComplete="off"
-                  onChange={(e) => setUser(e.target.value)}
-                  aria-invalid={validEmail ? "false" : "true"}
-                  // aria-describedby={uidnote}
-                  onFocus={() => setUserFocus(true)}
-                  // onBlur={() => setUserFocus(false)}
-                  required
-                  className="inline-block w-full p-4 leading-none placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 text-black rounded-lg text-3lack "
-                  placeholder="Enter username or email"
-                />
+                <p className="mb-3 text-3xl font-bold text-black">
+                  Welcome back
+                </p>
               </div>
-              <div className="mt-4">
-                <label
-                  className="mb-2.5 block font-normal text-black"
-                  htmlFor="password"
-                >
-                  Password:
-                  <FontAwesomeIcon
-                    icon={faCheck}
-                    className={validPwd ? "valid" : "hide"}
-                  />
-                  <FontAwesomeIcon
-                    icon={faTimes}
-                    className={validPwd || !pwd ? "hide" : "invalid"}
-                  />
-                </label>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                  aria-invalid={validPwd ? "false" : "true"}
-                  aria-describedby="pwdnote"
-                  onFocus={() => setPwdFocus(true)}
-                  onBlur={() => setPwdFocus(false)}
-                  className="inline-block w-full p-4 leading-none text-black placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 rounded-lg"
-                  placeholder="Enter password"
-                />
 
-                <p
-                  id="pwdnote"
-                  className={
-                    pwdFocus && !validPwd ? "instructions" : "offscreen"
-                  }
-                >
-                  <FontAwesomeIcon icon={faInfoCircle} />
-                  8 to 24 characters. <br />
-                  Must include uppercase and lowercases character. A number and
-                  a special character. <br />
-                  Allowed special character:{" "}
-                  <span aria-label="exclamation mark">!</span>
-                  <span aria-label="at symbol">@</span>{" "}
-                  <span aria-label="hashtag">#</span>
-                  <span aria-label="dollar sign">$</span>{" "}
-                  <span aria-label="percent sign">%</span>
-                </p>
-              </div>
-              <div className="flex flex-col justify-end w-full mt-4 sm:flex-row">
-                <div>
-                  <a
-                    href="#"
-                    className="text-sm hover:text-gray-600 text-[#184C72]"
-                  >
-                    <span className="text-black">Forgot password? </span>
-                    Reset password
-                  </a>
-                </div>
-              </div>
-              <div className="my-10">
-                <button
-                  type="submit"
-                  // disabled={!validEmail || validPwd ? true : false}
-                  className="w-full p-4 bg-[#184C72] rounded-lg hover:bg-[#184C71]"
-                >
-                  Login
-                </button>
-              </div>
-              <div className="mt-4">
-                <fieldset className="border-t border-gray-400 border-solid">
-                  <legend className="px-2 mx-auto text-sm text-center text-black">
-                    OR
-                  </legend>
-                </fieldset>
-              </div>
-              <div className="flex justify-center mt-4">
-                <p className="text-black">
-                  Don't have an account yet?{" "}
-                  <span className="text-[#184C72] font-semibold cursor-pointer hover:font-bold">
-                    {" "}
-                    Create account
-                  </span>{" "}
-                </p>
-              </div>
-              {/* <p id="uidnote" className={ userFocus && user &&!validEmail ? "instruction" : "offscreen"}>
+              <div className="mt-10">
+                <form onSubmit={handleSubmit}>
+                  <div>
+                    <label
+                      className="mb-2.5 block font-normal text-black"
+                      htmlFor="email"
+                    >
+                      Username or email
+                      <span className={validEmail ? "valid" : "hide"}>
+                        <FontAwesomeIcon icon={faCheck} />
+                      </span>
+                      <span
+                        className={validEmail || !user ? "hide" : "invalid"}
+                      >
+                        <FontAwesomeIcon icon={faTimes} />
+                      </span>
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      ref={userRef}
+                      value={user}
+                      autoComplete="off"
+                      onChange={(e) => setUser(e.target.value)}
+                      aria-invalid={validEmail ? "false" : "true"}
+                      // aria-describedby={uidnote}
+                      onFocus={() => setUserFocus(true)}
+                      // onBlur={() => setUserFocus(false)}
+                      required
+                      className="inline-block w-full p-4 leading-none placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 text-black rounded-lg text-3lack "
+                      placeholder="Enter username or email"
+                    />
+                  </div>
+                  <div className="mt-4">
+                    <label
+                      className="mb-2.5 block font-normal text-black"
+                      htmlFor="password"
+                    >
+                      Password:
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className={validPwd ? "valid" : "hide"}
+                      />
+                      <FontAwesomeIcon
+                        icon={faTimes}
+                        className={validPwd || !pwd ? "hide" : "invalid"}
+                      />
+                    </label>
+                    <input
+                      type="password"
+                      id="password"
+                      onChange={(e) => setPwd(e.target.value)}
+                      value={pwd}
+                      required
+                      aria-invalid={validPwd ? "false" : "true"}
+                      aria-describedby="pwdnote"
+                      onFocus={() => setPwdFocus(true)}
+                      onBlur={() => setPwdFocus(false)}
+                      className="inline-block w-full p-4 leading-none text-black placeholder-[#B1B1B1] bg-white border border-1 border-gray-200 rounded-lg"
+                      placeholder="Enter password"
+                    />
+
+                    <p
+                      id="pwdnote"
+                      className={
+                        pwdFocus && !validPwd ? "instructions" : "offscreen"
+                      }
+                    >
+                      <FontAwesomeIcon icon={faInfoCircle} />
+                      8 to 24 characters. <br />
+                      Must include uppercase and lowercases character. A number
+                      and a special character. <br />
+                      Allowed special character:{" "}
+                      <span aria-label="exclamation mark">!</span>
+                      <span aria-label="at symbol">@</span>{" "}
+                      <span aria-label="hashtag">#</span>
+                      <span aria-label="dollar sign">$</span>{" "}
+                      <span aria-label="percent sign">%</span>
+                    </p>
+                  </div>
+                  <div className="flex flex-col justify-end w-full mt-4 sm:flex-row">
+                    <div>
+                      <a
+                        href="#"
+                        className="text-sm hover:text-gray-600 text-[#184C72]"
+                      >
+                        <span className="text-black">Forgot password? </span>
+                        Reset password
+                      </a>
+                    </div>
+                  </div>
+                  <div className="my-10">
+                    <button
+                      type="submit"
+                      // disabled={!validEmail || validPwd ? true : false}
+                      className="w-full p-4 bg-[#184C72] rounded-lg hover:bg-[#184C71]"
+                    >
+                      Login
+                    </button>
+                  </div>
+                  <div className="mt-4">
+                    <fieldset className="border-t border-gray-400 border-solid">
+                      <legend className="px-2 mx-auto text-sm text-center text-black">
+                        OR
+                      </legend>
+                    </fieldset>
+                  </div>
+                  <div className="flex justify-center mt-4">
+                    <p className="text-black">
+                      Don't have an account yet?{" "}
+                      <span className="text-[#184C72] font-semibold cursor-pointer hover:font-bold">
+                        {" "}
+                        Create account
+                      </span>{" "}
+                    </p>
+                  </div>
+                  {/* <p id="uidnote" className={ userFocus && user &&!validEmail ? "instruction" : "offscreen"}>
                 <FontAwesomeIcon icon={faInfoCircle} /> *
                 4 to 24 characters. <br/>
                 Must begin with a Letter. <br />
                 Letters, numbers, underscore, hyphens allowed
               </p> */}
-            </form>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div className="h-screen w-1/2 relative ">
+            <div className="flex items-center content-center justify-center bg-red-300">
+              <p className="absolute text-white  w-[310px] text-3xl text-center top-20 ">
+                L' école Congolese B.G.S. offre un cadre éducatif qui rassure la
+                communauté de la ville de Kolwezi...
+              </p>
+            </div>
+
+            <img
+              src={LoginImage}
+              className="hidden object-cover w-full h-full lg:block"
+            />
           </div>
         </div>
-      </div>
-      <div className="h-screen w-1/2 relative ">
-        <div className="flex items-center content-center justify-center bg-red-300">
-          <p className="absolute text-white  w-[310px] text-3xl text-center top-20 ">
-            L' école Congolese B.G.S. offre un cadre éducatif qui rassure la
-            communauté de la ville de Kolwezi...
-          </p>
-        </div>
-
-        <img
-          src={LoginImage}
-          className="hidden object-cover w-full h-full lg:block"
-        />
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 
