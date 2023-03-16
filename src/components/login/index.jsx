@@ -9,6 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import LoginImage from "../../assets/login.png";
 import "./index.css";
 import axios from '../../api/axios';
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import AuthContext from "../../context/AuthProvider";
 
 // const USER_REGEX = /^[a-zA-Z][A-zA-Z0-9-_]{3,23}$/;
@@ -19,6 +20,11 @@ const LOGIN_URL = "/users/sign_in";
 
 const Login = () => {
   const {setAuth} = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const userRef = useRef();
   const errRef = useRef();
 
@@ -35,7 +41,7 @@ const Login = () => {
   const [matchFocus, setMatchFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -74,7 +80,8 @@ const Login = () => {
         setAuth({user, pwd, roles, accessToken})
         setUser('');
         setPwd('');
-        setSuccess(true);
+        // setSuccess(true);
+        navigate(from, {replace: true});
     } catch (err)  {
         if (!err?.response){
           setErrMsg('No Server Response')
@@ -90,19 +97,6 @@ const Login = () => {
   };
 
   return (
-    <>
-      {success ? (
-        <section className="success_container">
-          <div className="success flex justify-center">
-            <FontAwesomeIcon icon={faCheck} />
-            <h2>Success!</h2>
-            <p>You have successfully logged in.</p>
-            <p>
-              <a href="#">Go to Admin Dashboard</a>
-            </p>
-          </div>
-        </section>
-      ) : (
         <div className="relative flex w-full h-full text-black ">
           <p
             ref={errRef}
@@ -259,8 +253,6 @@ const Login = () => {
             />
           </div>
         </div>
-      )}
-    </>
   );
 };
 
