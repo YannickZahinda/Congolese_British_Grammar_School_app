@@ -4,11 +4,12 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import LoginImage from "../../assets/login.png";
 import "./index.css";
 import axios from '../../api/axios';
-import AuthContext from "../../context/AuthProvider";
+// import AuthContext from "../../context/AuthProvider";
 
 // const USER_REGEX = /^[a-zA-Z][A-zA-Z0-9-_]{3,23}$/;
 const EMAIL_REGEX =
@@ -17,7 +18,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const LOGIN_URL = "/users/sign_in";
 
 const Login = () => {
-  const {setAuth} = useContext(AuthContext);
+  const {setAuth} = useAuth();
   const userRef = useRef();
   const errRef = useRef();
 
