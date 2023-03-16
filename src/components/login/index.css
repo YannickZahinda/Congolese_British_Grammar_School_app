@@ -50,3 +50,17 @@
 .line {
     display: inline-block;
 }
+
+.success_container{
+    width: 50%;
+    margin: 2rem auto;
+    border-radius: 10px;
+    border: 1px solid green;
+    padding: 10px;
+}
+
+.success {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

@@ -14,7 +14,7 @@ import AuthContext from "../../context/AuthProvider";
 const EMAIL_REGEX =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const LOGIN_URL = "/users";
+const LOGIN_URL = "/users/sign_in";
 
 const Login = () => {
   const {setAuth} = useContext(AuthContext);
@@ -61,10 +61,10 @@ const Login = () => {
 
     try {
       const response = await axios.post(LOGIN_URL,
-        JSON.stringify({email: user, password: pwd}), 
+        JSON.stringify({user: {email: user, password: pwd}}), 
         {
           headers: {'content-Type' : 'application/json'}
-          // withCredentials: true
+          // withCredentials: 'true'
         }
       );
         console.log(JSON.stringify(response?.data));
@@ -91,13 +91,13 @@ const Login = () => {
   return (
     <>
       {success ? (
-        <section>
-          <div className="success">
+        <section className="success_container">
+          <div className="success flex justify-center">
             <FontAwesomeIcon icon={faCheck} />
             <h2>Success!</h2>
             <p>You have successfully logged in.</p>
             <p>
-              <a href="#">Back home</a>
+              <a href="#">Go to Admin Dashboard</a>
             </p>
           </div>
         </section>
